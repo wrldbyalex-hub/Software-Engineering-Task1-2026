@@ -14,11 +14,15 @@ st.title("🐍 Python Learning Path")
 
 # Sidebar for organization
 st.sidebar.title("Course Map")
-the_page = st.sidebar.radio("Go to:", ["Home Page", "Storing Data", "Week 2", "Week 3", "Week 4"])
+the_page = st.sidebar.radio("Go to:", ["Home Page", "Variables", "Week 2", "Week 3", "Week 4"])
 
 if the_page == "Home Page":
     welcome()
 
-elif the_page == "Week 1":
+elif the_page == "Variables":
     st.header("Week 1: Variables")
     st.info("Coming soon: Learn how to store data!")
+
+elif the_page == "Week 2":
+    st.header("Week 2: Data Types")
+    st.info("Coming soon: Learn about different data types in Python!")
