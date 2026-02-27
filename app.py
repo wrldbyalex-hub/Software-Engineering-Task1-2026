@@ -6,7 +6,7 @@ def welcome_section():
     st.write("This app is designed to help you learn coding from scratch.")
     name = st.text_input("First, what is your name?")
     if name:
-        st.success(f"Hi {name}! Let's get started.")
+        st.success(f"Hi {name}! Let's get started, and Good luck.")
         st.balloons()
 
 # SECTION 1 REQUIREMENT: Intuitive Navigation
@@ -23,4 +23,3 @@ if page == "Introduction":
 elif page == "Week 1":
     st.header("Week 1: Variables")
     st.info("Coming soon: Learn how to store data!")
-    
