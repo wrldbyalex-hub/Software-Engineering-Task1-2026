@@ -2,12 +2,11 @@ import streamlit as st
 
 # SECTION 4 REQUIREMENT: Function
 def welcome():
-    st.header("Welcome to the 4-Week Python Course!")
-    st.write("This app is designed to help you learn coding from scratch.")
+    st.header("Welcome to my Python Course!")
+    st.write("This website is being to tell you the basics of python.")
     name = st.text_input("First, what is your name?")
     if name:
         st.success(f"Hi {name}! Let's get started, and Good luck.")
-        st.balloons()
 
 # SECTION 1 REQUIREMENT: Navigation
 st.set_page_config(page_title="Alex's Python Project", page_icon="🐍")
