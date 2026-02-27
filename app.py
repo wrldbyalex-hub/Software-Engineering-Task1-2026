@@ -2,7 +2,7 @@ import streamlit as st
 
 # SECTION 4 REQUIREMENT: Using a Subprogram (Function)
 def welcome_section():
-    st.header("Welcome to the 4-Week Python Masterclass")
+    st.header("Welcome to the 4-Week Python Course!")
     st.write("This app is designed to help you learn coding from scratch.")
     name = st.text_input("First, what is your name?")
     if name:
@@ -23,5 +23,4 @@ if page == "Introduction":
 elif page == "Week 1":
     st.header("Week 1: Variables")
     st.info("Coming soon: Learn how to store data!")
-
-    # this is a placeholder, not my code.
+    
