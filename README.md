@@ -6,6 +6,7 @@
 - **Feb 27:** Started repository and set up project structure.
 - **Feb 27:** Implemented the first structural element for the user welcome screen and established the sidebar.
 - **Feb 27:** Changed the sidebar to be able to be collapsable and also movable 
+- **Feb 28:** Updating page 2 to teach the user about strings, functions and variables.
 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.

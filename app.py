@@ -27,6 +27,7 @@ elif the_page == "The basics":
     st.write("Lets break down this code:" \
     "`print()` is a function that outputs text to the console." \
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
+    st.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
 
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
