@@ -1,5 +1,11 @@
 import streamlit as st
 
+if "nav_key" not in st.session_state:
+    st.session_state["nav_key"] = "Home Page"
+
+# SECTION 1 REQUIREMENT: Navigation
+st.set_page_config(page_title="Alex's Python Project", page_icon="🐍")
+st.title("🐍 Python Learning Path")
 # trying to make the question save
 if "quiz done" not in st.session_state:
     st.session_state["quiz done"] = False
@@ -17,22 +23,24 @@ def welcome():
     if name:
         st.success(f"Hi {name}! Let's get started, and Good luck.")
 
-# SECTION 1 REQUIREMENT: Navigation
-st.set_page_config(page_title="Alex's Python Project", page_icon="🐍")
-st.title("🐍 Python Learning Path")
-
 # Sidebar for organization
 st.sidebar.title("Course Map")
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", ...], key="navigation")
+the_page = st.sidebar.radio(
+    "Go to:",
+    ["Home Page", "The basics", "Week 2"]
+    key="nav_key"
+)
 
 if the_page == "Home Page":
     welcome()
 
 elif the_page == "The basics":
     st.header("Week 1: The Basics")
+    if st.session_state["quiz done"]:
+        st.info("🌟 You've already completed this Question.")
     st.info("In this stage, you will learn about the absolute basics of Python, including syntax, variables, and simple data types. This is the foundation for your Python journey!")
     st.write("Here is a simple example of Python code:")
-    st.code("print('Hello, World!)")
+    st.code("print('Hello, World!')")
     st.write("Lets break down this code:" \
     "`print()` is a function that outputs text to the console." \
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
