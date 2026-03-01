@@ -9,11 +9,6 @@ if "quiz done" not in st.session_state:
 if "nav_key" not in st.session_state:
     st.session_state["nav_key"] = "Home Page"
 
-if st.session_state["quiz done"]:
-        st.info("🌟 You've already completed this Question.")
-
-st.write(f"DEBUG: Is the quiz done? {st.session_state['quiz done']}")
-    
 # SECTION 4 REQUIREMENT: Function
 def welcome():
     st.header("Welcome to my Python Course!")
@@ -24,6 +19,12 @@ def welcome():
 
 # Sidebar for organization
 st.sidebar.title("Course Map")
+total_steps = 4
+current_step = st.sidebar.slider("Your progress ", 0, total_steps, 0)
+progress_percentage = (current_step / total_steps) * 100
+safe_progress = max(0.0, min(float(progress_percentage), 1.0)) * 100
+st.sidebar.progress(safe_progress)
+st.sidebar.write(f"You are {int(safe_progress)}% through the course!")
 the_page = st.sidebar.radio(
     "Go to:",
     ["Home Page", "The basics", "Week 2"],
@@ -35,8 +36,6 @@ if the_page == "Home Page":
 
 elif the_page == "The basics":
     st.header("Week 1: The Basics")
-    if st.session_state["quiz done"]:
-        st.info("🌟 You've already completed this Question.")
     st.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is your Python journey!")
     st.write("Here is a simple example of Python code:")
     st.code("print('Hello, World!')")
