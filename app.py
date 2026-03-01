@@ -4,8 +4,8 @@ import streamlit as st
 if "quiz done" not in st.session_state:
     st.session_state["quiz done"] = False
 
-if st.session_state["quiz done"] == True:   
-    st.info("🌟 You've already completed this Question.")
+if st.session_state["quiz done"]:
+        st.info("🌟 You've already completed this Question.")
 
 st.write(f"DEBUG: Is the quiz done? {st.session_state['quiz done']}")
     
@@ -23,7 +23,7 @@ st.title("🐍 Python Learning Path")
 
 # Sidebar for organization
 st.sidebar.title("Course Map")
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2", "Week 3", "Week 4"])
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", ...], key="navigation")
 
 if the_page == "Home Page":
     welcome()
@@ -42,7 +42,7 @@ elif the_page == "The basics":
         if user_guess == "'Hello!'":
             st.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
             st.session_state["quiz done"] = True
-        else:
+        elif user_guess is not None:
             st.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
 
 elif the_page == "Week 2":
