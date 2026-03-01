@@ -3,6 +3,11 @@ import streamlit as st
 # trying to make the question save
 if "quiz done" not in st.session_state:
     st.session_state["quiz done"] = False
+
+if st.session_state["quiz done"] == True:   
+    st.info("🌟 You've already completed this Question.")
+
+st.write(f"DEBUG: Is the quiz done? {st.session_state['quiz done']}")
     
 # SECTION 4 REQUIREMENT: Function
 def welcome():
@@ -32,12 +37,13 @@ elif the_page == "The basics":
     "`print()` is a function that outputs text to the console." \
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     st.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
-    user_guess =st.radio("Question: Which option here is a string?", ["42", "hi!", "'Hello!'"])
-    if user_guess == "'Hello!'":
-        st.session_state["quiz done"] = True
-        st.success("Correct! 'Hello!' is a string because it is enclosed in quotation marks.")
-    else:
-        st.error("Not quite. Remember, a string is a sequence of characters enclosed in quotation marks. Try again!")
+    user_guess = st.radio("Question: Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None)
+    if user_guess:
+        if user_guess == "'Hello!'":
+            st.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
+            st.session_state["quiz done"] = True
+        else:
+            st.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
 
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
