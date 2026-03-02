@@ -46,7 +46,9 @@ else:
 
 if the_page == "Home Page":
     welcome()
-
+    st.divider()
+    st.markdown("### Why use python?")
+    
 elif the_page == "The basics":
     st.header("Week 1: The Basics")
     st.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is your Python journey!")
@@ -63,6 +65,7 @@ elif the_page == "The basics":
             st.session_state["quiz done"] = True
         elif user_guess is not None:
             st.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
+    st.divider()
 
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
