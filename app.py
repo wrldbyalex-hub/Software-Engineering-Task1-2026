@@ -27,15 +27,15 @@ the_page = st.sidebar.radio(
 )
 
 page_map = {
-    "Home Page": 1,
-    "The basics": 2,
-    "Week 2": 3
+    "Home Page": 0,
+    "The basics": 1,
+    "Week 2": 2
 }
 current_step = page_map.get(the_page, 1)
-total_steps = len(page_map)
+total_steps = 2
 progress_float = float(current_step / total_steps)
 super_progress_epic = max(0.0, min(progress_float, 1.0))
-st.sidebar.progress(f"**Course Progress: {int(super_progress_epic * 100)}**")
+st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}**")
 st.sidebar.progress(super_progress_epic)
 
 
