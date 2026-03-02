@@ -37,7 +37,7 @@ if current_step > 0:
     progress_float = float(current_step / total_steps)
     super_progress_epic = max(0.0, min(progress_float, 1.0))
     
-    st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}**")
+    st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}%**")
     st.sidebar.progress(super_progress_epic)
 else:
     st.sidebar.write("**Course Progress: 0%**")
