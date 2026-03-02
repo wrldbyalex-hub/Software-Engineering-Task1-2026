@@ -19,18 +19,25 @@ def welcome():
 
 # Sidebar for organization
 st.sidebar.title("Course Map")
-total_steps = 4
-current_step = st.sidebar.slider("Your progress ", 0, total_steps, 0)
-progress_percentage = (current_step / total_steps)
-st.sidebar.write(f"**Course Progress: {int(progress_percentage * 100)}%**")
-st.sidebar.progress(progress_percentage)
+
 the_page = st.sidebar.radio(
     "Go to:",
     ["Home Page", "The basics", "Week 2"],
     key="nav_key"
 )
-if st.session_state.get("quiz done"):
-    current_step += 1
+
+page_map = {
+    "Home Page": 1,
+    "The basics": 2,
+    "Week 2": 3
+}
+current_step = page_map.get(the_page, 1)
+total_steps = len(page_map)
+progress_float = float(current_step / total_steps)
+super_progress_epic = max(0.0, min(progress_float, 1.0))
+st.sidebar.progress(f"**Course Progress: {int(super_progress_epic * 100)}**")
+st.sidebar.progress(super_progress_epic)
+
 
 if the_page == "Home Page":
     welcome()
