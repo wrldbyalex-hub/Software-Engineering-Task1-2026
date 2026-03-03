@@ -15,9 +15,9 @@ def welcome(): # This function is to make the name input able to accept any name
 
 st.sidebar.title("Lessons") 
 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Functions"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Detailed Variables"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
-page_map = {"Home Page": 0, "The basics": 1, "Functions": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
+page_map = {"Home Page": 0, "The basics": 1, "Detailed Variables": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1 # used len to make it so if I add more pages it will automatically update the total steps.
 if current_step > 0: # Makes it so that the percentage bar only moves when you move tabs
@@ -145,9 +145,16 @@ elif the_page == "The basics":
     variables.header("Variables")
     variables.write("Variables are what you store information in. You can put anything in there, and then use it later. For example, you could have \
                     a variable called `coolguy` and store the string 'Alex' in there, and then use that variable to print it later on.")
+    variables.code("coolguy = 'Alex'\nprint(coolguy)")
+    variables.write("This will print 'Alex' to the console, because we stored that string in the variable `coolguy`. You can also store integers in variables, like this:")
+    variables.code("age = 16\nprint(age)")
+    variables.write("This will print 16 to the console, because we stored that integer in the variable `age`. You can also do cool things in a variable, like this:")
+    variables.code("alex_score = 17\nxavier_score = 20\nprint(alex_score + xavier_score)")
+    variables.write("This will print 37 to the console, because we stored the integers 17 and 20 in the variables, and just added them together like boom.")
+
 
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
-elif the_page == "Functions":
-    st.header("Week 2: Functions")
-    st.info("Coming soon: Learn about functions in Python!")
+elif the_page == "Detailed Variables":
+    st.header("Week 2: Detailed Variables")
+    st.info("Coming soon: Learn about more variables in Python!")
