@@ -2,13 +2,13 @@ from os import name
 
 import streamlit as st
 
-st.set_page_config(page_title="The Python Project", page_icon="🐍")
-st.title("🐍 Python Learning Path")
+st.set_page_config(page_title="The Python Project", page_icon="🐍") # Would be related to the link if there was one.
+st.title("🐍 Python Learning Path") # The title of the page.
 
-if "nav_key" not in st.session_state:
-    st.session_state["nav_key"] = "Home Page"
+if "nav_key" not in st.session_state: 
+    st.session_state["nav_key"] = "Home Page" # This is to make sure that when using the sidebar buttons, the page doesn't reset to the home page.
 
-def welcome():
+def welcome(): # This function is to make the name input able to accept any name and then return that value back to welcome for later use.
     st.header("Welcome to my Python Course!")
     st.write("This website is to teach you some python.")
     name = st.text_input("What's your name?")
@@ -17,11 +17,11 @@ def welcome():
 
 st.sidebar.title("Lessons")
 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key")
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
-page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2}
+page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
 current_step = page_map.get(the_page, 0)
-total_steps = len(page_map) - 1
+total_steps = len(page_map) - 1 # used len to make it so if I add more pages it will automatically update the total steps.
 if current_step > 0:
     progress_float = float(current_step / total_steps)
     super_progress_epic = max(0.0, min(progress_float, 1.0))
@@ -32,17 +32,17 @@ else:
     st.sidebar.write("**Course Progress: 0%**")
     st.sidebar.progress(0.0)    
 
-if the_page == "Home Page":
+if the_page == "Home Page": # Home page
     welcome()
     st.divider()
     st.markdown("## Why use python?")
     st.subheader("The popularity of the biggest languages (%)")
     st.write("The rest of the languages are not shown, but are the remaining 36% not shown on the cool graph.")
 
-    chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7}
+    chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7} # data chart showing which coding languages are used the most.
     st.bar_chart(chart_data_cool)
     st.markdown("Source: [https://www.statista.com/chart/16567/popular-programming-languages/?srsltid=AfmBOooCo-F7T61EWQEkaASlvtsIwpnGKq-qA1K0hLLP64Fs3VogekTE]")
-    what_u_can_do, another_one =st.columns(2)
+    what_u_can_do, another_one =st.columns(2) # columns to make the page look nicer and less cluttered, allowing for more content to be shown without it looking bad.
     with what_u_can_do:
         st.subheader("What can you do with python?")
         st.image("https://f4.bcbits.com/img/a2712205983_16.jpg")
@@ -56,15 +56,16 @@ if the_page == "Home Page":
         st.markdown("-And much more!")
         st.markdown("*Streamlit* is **really** ***cool***.")
         st.markdown('''
-            :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool]
-            :gray[stuff as] :rainbow[shown above]''')
+            :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool] # aestheticaly pleasing for me
+            :gray[stuff as] :rainbow[shown above]''') # aestheticaly pleasing for me
     st.divider()
     st.subheader("Just remember that this is the **basics**.")
 
-
-elif the_page == "The basics":
+# This is the first page. It has quite alot of content, so I used tabs to make it look nicer.
+# I also added some questions to make sure the user understands the code and concepts. 
+elif the_page == "The basics": 
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
-    basics.header(f"{name}, welcome to The Basics") 
+    basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
@@ -91,6 +92,7 @@ elif the_page == "The basics":
     strings.write("If you want to have a string to actually appear where you want it to, for example the console, you would need to use the `print()` function. More on that later.")
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
+
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
