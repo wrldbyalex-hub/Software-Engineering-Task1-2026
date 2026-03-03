@@ -35,13 +35,13 @@ if the_page == "Home Page": # Home page
     st.divider()
     st.markdown("## Why use python?") # the ## is to affect the size.
     st.subheader("The popularity of the biggest languages (%)")
-    st.write("The rest of the languages are not shown, but are the remaining 36% not shown on the cool graph.")
+    st.write("The rest of the languages are not shown, but are the remaining 36% not shown on the cool graph.") 
 
-    chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7} # data chart showing which coding languages are used the most.
+    chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7} # data chart showing which coding languages are used the most, as well as a source for where the data is from.
     st.bar_chart(chart_data_cool)
     st.markdown("Source: [https://www.statista.com/chart/16567/popular-programming-languages/?srsltid=AfmBOooCo-F7T61EWQEkaASlvtsIwpnGKq-qA1K0hLLP64Fs3VogekTE]")
-    what_u_can_do, another_one =st.columns(2) # columns to make the page look nicer and less cluttered, allowing for more content to be shown without it looking bad.
-    with what_u_can_do:
+    what_u_can_do, another_one =st.columns(2) # columns to make the page look nicer and less cluttered, allowing for more content to be shown without it looking bad. Not only does this contrast the page, 
+    with what_u_can_do: # but it also allows for it to be more organised.
         st.subheader("What can you do with python?")
         st.image("https://f4.bcbits.com/img/a2712205983_16.jpg")
     with another_one:
@@ -55,12 +55,12 @@ if the_page == "Home Page": # Home page
         st.markdown("*Streamlit* is **really** ***cool***.")
         st.markdown('''
             :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool] # aestheticaly pleasing for me
-            :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me
+            :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me, nothing much here lol
     st.divider()
     st.subheader("Just remember that this is the **basics**.")
 
-# This is the first page. It has quite alot of content, so I used tabs to make it look nicer.
-# I also added some questions to make sure the user understands the code and concepts. 
+# This is the first page. It has quite alot of content, so I used tabs to make it look nicer, and also its more organised, because if you just have one page thats alot of scrolling.
+# I also added some questions to make sure the user understands the code and concepts, because like if you read it but don't implement it, your gonna forget it.
 elif the_page == "The basics": 
     basics, strings, integers, functions, variables = st.tabs(["Basics", "Strings", "Integers", "Functions", "Variables"])
     basics.header("Welcome to The Basics") 
@@ -74,25 +74,25 @@ elif the_page == "The basics":
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
     user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1") # The index = None is to make it so that the question isn't auto answered.
-    if user_guess: # This if statement is to make sure that the user has actually made a guess. 
+    if user_guess: # This if statement is to make sure that the user has actually made a guess, and not just do nothing like a bum.
         if user_guess == "'Hello!'":
             strings.success("Yeah, 'Hello!' is a string because it is surrounded by quotation marks.")
-        elif user_guess is not None:
+        elif user_guess is not None: # if the answer is anything BUT the right answer, it will show this message. The reason I used elif instead of else is to make it so that if the user hasn't made a guess, it won't show the error message, because that would be annoying.
             strings.error("Close. A string is a something that is surrounded by quotation marks.")
     st.divider() # divider to make the page look nicer and less cluttered.
     user_guess2 = strings.radio("What are strings surrounded by?", ["brackets", "quotation marks", "parentheses", "Only the '' marks"], index = None, key = "quiz2")
     if user_guess2: # Same for this question, to make sure the user has made a guess.
         if user_guess2 == "quotation marks":
             strings.success("Right! Strings are surrounded by quotations, which can be (' ') or (\" \")")
-        elif user_guess2 is not None:
-            strings.error("While single quotation marks (' ') can be used to make strings, double ones (\" \") can also be used.")
+        elif user_guess2 is not None: # same here tbh
+            strings.error("While single quotation marks (' ') can be used to make strings, double ones (\" \") can also be used.") # Didn't mention this earlier
     strings.subheader("Summary")
     strings.write("So, strings must be surrounded by quotations, and can have anything you want in there. They are used to represent text, like the ones your actually reading right now.")
     strings.write("If you want to have a string to actually appear where you want it to, for example the console, you would need to use the `print()` function. More on that later.")
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
 
-# Week 2, should start this I think.
+# Week 2, should start this I think, probably not going to be about data types, despite that devious name. 
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
