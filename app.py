@@ -78,7 +78,11 @@ elif the_page == "The basics":
     elif user_guess is not None:
             strings.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
     st.divider()
-
+    user_guess2 = strings.radio("Question: What are strings surrounded by?", 
+    ["brackets", "quotation marks", "parentheses", "Only the '' marks"], 
+    index = None,
+    key = "quiz2"
+    )
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
