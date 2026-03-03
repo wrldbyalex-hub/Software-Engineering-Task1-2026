@@ -62,10 +62,16 @@ if the_page == "Home Page": # Home page
 # This is the first page. It has quite alot of content, so I used tabs to make it look nicer, and also its more organised, because if you just have one page thats alot of scrolling.
 # I also added some questions to make sure the user understands the code and concepts, because like if you read it but don't implement it, your gonna forget it.
 elif the_page == "The basics": 
-    basics, strings, integers, functions, variables = st.tabs(["Basics", "Strings", "Integers", "Functions", "Variables"])
+    basics, strings, integers, variables = st.tabs(["Basics", "Strings", "Integers", "Variables"])
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     basics.write("Python is probably the best programming language to start with, because it reads a lot like english, and can be used for a wide variety of things.")
+    with basics.expander("Strings"):
+        basics.write("In Python, a string is a sequence of characters. Represents text.")
+    with basics.expander("Integers"):
+        basics.write("An integer is a whole number, positive or negative, WITHOUT decimals.")
+    with basics.expander("Variables"):
+        basics.write("A variable is a named location in memory that stores a value. In Python, you can create variables to hold data and manipulate it throughout your program.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')") 
