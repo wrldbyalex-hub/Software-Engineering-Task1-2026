@@ -57,7 +57,7 @@ if the_page == "Home Page": # Home page
             :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool]
             :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me, nothing much here lol
     st.divider()
-    st.subheader("Just remember that this is the **basics**.")
+    st.subheader("Just remember that this is the **basics**. Kinda.")
 
 # This is the first page. It has quite alot of content, so I used tabs to make it look nicer, and also its more organised, because if you just have one page thats alot of scrolling.
 # I also added some questions to make sure the user understands the code and concepts, because like if you read it but don't implement it, your gonna forget it.
@@ -97,6 +97,20 @@ elif the_page == "The basics":
     strings.write("If you want to have a string to actually appear where you want it to, for example the console, you would need to use the `print()` function. More on that later.")
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
+    integers.header("Integers")
+    integers.write("As you probably know, integers are whole numbers, positive or negative. They can be used for a bunch of things, like doing simple math, or even advanced math. However, unlike " \
+    "strings, integers can't be used to represent text, and you probably shouldn't surround them in quotation marks." \
+    "for example:")
+    integers.code("print(42)")
+    integers.write("This will print the number 42 to the console. However, if you put it in quotation marks, like this:")
+    integers.code("print('42')")
+    integers.write("It will print the string '42', which isn't a number.")
+    user_guess3 = integers.radio("Which one here is a integer?", ["42", "'42'", "Both of them"], index = None, key = "quiz3")
+    if user_guess3: # Do I need to explain?
+        if user_guess3 == "42":
+            integers.success("Right! 42 is an integer because it is a whole number.")
+        elif user_guess3 is not None:
+            integers.error("Not quite my tempo.")
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Functions":

@@ -12,6 +12,8 @@
 - **Mar 3:** I added tabs to "the basics" tab on the sidebar so that it wouldn't be one long page of scrolling. Furthermore, tabs are visually pleasing and each hold their own data, information and questions. 
 - **Mar 3:** Did research on using questions, and found out that each question requires a key, similar to the sidebar.
 - **Mar 3:** Added a second question in the strings tab to further someones understanding, with different results happening depending if you choose the right or wrong answer. 
+- **Mar 3:** Updated opening page to have some statistics on python and some examples of the stuff you can do with it. 
+- **Mar 3:** Finished the strings tab and changed the syntax error tab to the Functions tab, as I believe thats more important than alot of those. 
 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.
