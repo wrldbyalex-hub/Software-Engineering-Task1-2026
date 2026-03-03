@@ -54,7 +54,7 @@ if the_page == "Home Page": # Home page
         st.markdown("-And much more!")
         st.markdown("*Streamlit* is **really** ***cool***.")
         st.markdown('''
-            :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool] # aestheticaly pleasing for me
+            :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool]
             :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me, nothing much here lol
     st.divider()
     st.subheader("Just remember that this is the **basics**.")
