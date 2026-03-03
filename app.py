@@ -1,3 +1,5 @@
+from os import name
+
 import streamlit as st
 
 st.set_page_config(page_title="The Python Project", page_icon="🐍")
@@ -52,11 +54,17 @@ if the_page == "Home Page":
         st.markdown("-Creating AI")
         st.markdown("-Game development")
         st.markdown("-And much more!")
+        st.markdown("*Streamlit* is **really** ***cool***.")
+        st.markdown('''
+            :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool]
+            :gray[stuff as] :rainbow[shown above]''')
+    st.divider()
+    st.subheader("Just remember that this is the **basics**.")
 
 
 elif the_page == "The basics":
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
-    basics.header("Week 1: The Basics") 
+    basics.header(f"{name}, welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
