@@ -70,8 +70,8 @@ elif the_page == "The basics":
     string_basics.write('''A string is anything surrounded in either (" "), or (' '). Go to the strings tab to learn more about strings and how they work.''')
     integers_basics = basics.expander("Integers")
     integers_basics.write('''An integer is a whole number, positive or negative, WITHOUT decimals.''')
-    with basics.expander("Variables"):
-        basics.write('''A variable is something named in memory that stores a value. You can create variables to hold data and use it in your program.''')
+    variables_basics = basics.expander("Variables")
+    variables_basics.write('''A variable is a way to store information, like a container. You can put anything in there, and then use it later on in your code. For example, you could have a variable called `name` and store your name in there, and then use that variable to print your name later on. Oh wait, I did that.''')
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')") 
