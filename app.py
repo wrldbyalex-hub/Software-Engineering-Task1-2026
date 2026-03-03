@@ -72,6 +72,7 @@ elif the_page == "The basics":
     integers_basics.write('''An integer is a whole number, positive or negative, WITHOUT decimals.''')
     variables_basics = basics.expander("Variables")
     variables_basics.write('''A variable is a way to store information, like a container. You can put anything in there, and then use it later on in your code. For example, you could have a variable called `name` and store your name in there, and then use that variable to print your name later on. Oh wait, I did that.''')
+    
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')") 
@@ -97,6 +98,7 @@ elif the_page == "The basics":
     strings.write("If you want to have a string to actually appear where you want it to, for example the console, you would need to use the `print()` function. More on that later.")
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
+    
     integers.header("Integers")
     integers.write("As you probably know, integers are whole numbers, positive or negative. They can be used for a bunch of things, like doing simple math, or even advanced math. However, unlike " \
     "strings, integers can't be used to represent text, and you probably shouldn't surround them in quotation marks." \
@@ -117,7 +119,7 @@ elif the_page == "The basics":
     integers.write("This will print 4, because 2 + 2 = 4.")
     integers.write("But thats just the start. But before you learn more, you'll need to know this:")
     different_math_things = { # This is the start of a table to show different math signs and what they do
-        "Sign": ["`+`", "`-`", "`*`", "`/`", "`**`", "`%`"],
+        "Sign": ["`+`", "`-`", "`*`", "`/`", "`**`", "`%`"], # surrounded in `` because the console thought it was a list when I didn't want it to, so this is a easy fix.
         "Name": ["Addition", "Subtraction", "Multiplication", "Division", "Exponentiation", "Modulo"], # The names that will apear next to the signs
         "Purpose": [ # What they do and stuff
             "Adding two numbers together",
@@ -136,8 +138,9 @@ elif the_page == "The basics":
             "print(10 % 3) # This will print 1"
         ]
     }
-    st.table(different_math_things) # A table to show the different math signs, their names, purposes, and examples. I think this is a good way to show this information, because its easy to read and understand.
+    integers.table(different_math_things) # A table to show the different math signs, their names, purposes, and examples. I think this is a good way to show this information, because its easy to read and understand.
     integers.write("As you can see, there are a lot of different math signs, and they all have different purposes.")
+    integers.code("print('Well done again on completing another section.')")
 
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
