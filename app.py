@@ -62,7 +62,7 @@ if the_page == "Home Page":
 elif the_page == "The basics":
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
     basics.header("Week 1: The Basics") 
-    basics.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is your Python.")
+    basics.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is Python.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')")
