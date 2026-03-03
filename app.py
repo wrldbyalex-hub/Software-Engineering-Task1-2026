@@ -55,16 +55,17 @@ elif the_page == "The basics":
     user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1")
     if user_guess:
         if user_guess == "'Hello!'":
-            strings.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
+            strings.success("Yeah, 'Hello!' is a string because it is surrounded by quotation marks.")
         elif user_guess is not None:
-            strings.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
+            strings.error("Close. A string is a something that is surrounded by quotation marks.")
     st.divider()
     user_guess2 = strings.radio("What are strings surrounded by?", ["brackets", "quotation marks", "parentheses", "Only the '' marks"], index = None, key = "quiz2")
     if user_guess2:
         if user_guess2 == "quotation marks":
-            strings.success("Right! Strings are surrounded by quotation marks, which can be either single (' ') or double (\" \")")
+            strings.success("Right! Strings are surrounded by quotations, which can be (' ') or (\" \")")
         elif user_guess2 is not None:
-            strings.error("While single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
+            strings.error("While single quotation marks (' ') can be used to make strings, double ones (\" \") can also be used.")
+
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
