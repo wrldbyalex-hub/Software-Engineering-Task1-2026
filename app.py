@@ -83,6 +83,11 @@ elif the_page == "The basics":
     index = None,
     key = "quiz2"
     )
+    if user_guess2:
+        if user_guess2 == "quotation marks":
+            strings.success("Right! Strings are surrounded by quotation marks, which can be either single (' ') or double (\" \")")
+        else:
+            strings.warning("Close, but while single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
