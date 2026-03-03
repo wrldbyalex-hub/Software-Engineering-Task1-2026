@@ -12,11 +12,6 @@ def welcome():
     name = st.text_input("What's your name?")
     if name:
         st.success(f"Hi {name}. Time to start coding.")
-        age = st.number_input("Whats your age?", 1, 21)
-        if age < 12:
-            st.warning("This course is meant for high school students! You can still go ahead, but it might be a bit hard.")
-        else:
-            st.success("You are the right age for this course. Welcome!")
 
 st.sidebar.title("Lessons")
 
