@@ -10,7 +10,8 @@
 - **Mar 2:** I added this dynamic progress bar using st.progress. It calculates the amount of completed session state variables against the total lesson count, the UI provides real-time feedback on learner advancement.
 - **Mar 3:** I added a graph on the page to start adding more content there, and to show why one should learn python and not other languages. I also added a source link to prove that the stats are not made up. 
 - **Mar 3:** I added tabs to "the basics" tab on the sidebar so that it wouldn't be one long page of scrolling. Furthermore, tabs are visually pleasing and each hold their own data, information and questions. 
-- **Mar 3:** 
+- **Mar 3:** Did research on using questions, and found out that each question requires a key, similar to the sidebar.
+- **Mar 3:** Added a second question in the strings tab to further someones understanding, with different results happening depending if you choose the right or wrong answer. 
 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.
