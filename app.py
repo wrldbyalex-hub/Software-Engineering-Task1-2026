@@ -9,9 +9,14 @@ if "nav_key" not in st.session_state:
 def welcome():
     st.header("Welcome to my Python Course!")
     st.write("This website is to teach you some python.")
-    name = st.text_input("what's your name?")
+    name = st.text_input("What's your name?")
     if name:
         st.success(f"Hi {name}. Time to start coding.")
+    age = st.slider("Whats your age?", 1, 18)
+    if age < 12:
+        st.warning("This course is meant for high school students! You can still go ahead, but it might be a bit hard.")
+    else:
+        st.success("You are the right age for this course. Welcome!")
 
 st.sidebar.title("Lessons")
 
@@ -35,6 +40,7 @@ if the_page == "Home Page":
     st.divider()
     st.markdown("## Why use python?")
     st.subheader("The popularity of the biggest languages (%)")
+    st.write("The rest of the languages are not shown, but are the remaining 36% not shown on the cool graph.")
 
     chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7}
     st.bar_chart(chart_data_cool)
@@ -65,7 +71,11 @@ elif the_page == "The basics":
             strings.success("Right! Strings are surrounded by quotations, which can be (' ') or (\" \")")
         elif user_guess2 is not None:
             strings.error("While single quotation marks (' ') can be used to make strings, double ones (\" \") can also be used.")
-
+    strings.subheader("Summary")
+    strings.write("So, strings must be surrounded by quotations, and can have anything you want in there. They are used to represent text, like the ones your actually reading right now.")
+    strings.write("If you want to have a string to actually appear where you want it to, for example the console, you would need to use the `print()` function. More on that later.")
+    strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
+    strings.code("print('Well done on completing your first lesson.')")
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
