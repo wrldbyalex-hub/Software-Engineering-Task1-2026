@@ -1,22 +1,19 @@
 import streamlit as st
 
-st.set_page_config(page_title="Alex's Python Project", page_icon="🐍")
+st.set_page_config(page_title="The Python Project", page_icon="🐍")
 st.title("🐍 Python Learning Path")
-
-if "quiz done" not in st.session_state:
-    st.session_state["quiz done"] = False
 
 if "nav_key" not in st.session_state:
     st.session_state["nav_key"] = "Home Page"
 
 def welcome():
     st.header("Welcome to my Python Course!")
-    st.write("This website is being to tell you the basics of python.")
-    name = st.text_input("First, what is your name?")
+    st.write("This website is to teach you some python.")
+    name = st.text_input("what's your name?")
     if name:
-        st.success(f"Hi {name}! Let's get started, and Good luck.")
+        st.success(f"Hi {name}. Time to start coding.")
 
-st.sidebar.title("Course Map")
+st.sidebar.title("Lessons")
 
 the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key")
 
