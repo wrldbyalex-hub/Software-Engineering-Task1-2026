@@ -116,17 +116,10 @@ elif the_page == "The basics":
     integers.code("print(2 + 2)")
     integers.write("This will print 4, because 2 + 2 = 4.")
     integers.write("But thats just the start. But before you learn more, you'll need to know this:")
-    different_math_things = {
-        "Sign": [
-            "+", 
-            "-", 
-            "*", 
-            "/", 
-            "**", 
-            "%"
-        ],
-        "Name": ["Addition", "Subtraction", "Multiplication", "Division", "Exponentiation", "Modulo"],
-        "Purpose": [
+    different_math_things = { # This is the start of a table to show different math signs and what they do
+        "Sign": ["`+`", "`-`", "`*`", "`/`", "`**`", "`%`"],
+        "Name": ["Addition", "Subtraction", "Multiplication", "Division", "Exponentiation", "Modulo"], # The names that will apear next to the signs
+        "Purpose": [ # What they do and stuff
             "Adding two numbers together",
             "Subtracting one number from another",
             "Multiplying two numbers together",
@@ -134,7 +127,7 @@ elif the_page == "The basics":
             "Raising a number to the power of another",
             "Finding the remainder after division"
         ],
-        "example": [
+        "example": [ # A example of how to use the sign and what it does.
             "print(2 + 2) # This will print 4",
             "print(5 - 3) # This will print 2",
             "print(4 * 3) # This will print 12",
