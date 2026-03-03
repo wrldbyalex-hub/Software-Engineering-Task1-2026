@@ -74,15 +74,15 @@ elif the_page == "The basics":
     "`print()` is a function that outputs text to the console." \
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
-    user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1")
-    if user_guess:
+    user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1") # The index = None is to make it so that the question isn't auto answered.
+    if user_guess: # This if statement is to make sure that the user has actually made a guess. 
         if user_guess == "'Hello!'":
             strings.success("Yeah, 'Hello!' is a string because it is surrounded by quotation marks.")
         elif user_guess is not None:
             strings.error("Close. A string is a something that is surrounded by quotation marks.")
-    st.divider()
+    st.divider() # divider to make the page look nicer and less cluttered.
     user_guess2 = strings.radio("What are strings surrounded by?", ["brackets", "quotation marks", "parentheses", "Only the '' marks"], index = None, key = "quiz2")
-    if user_guess2:
+    if user_guess2: # Same for this question, to make sure the user has made a guess.
         if user_guess2 == "quotation marks":
             strings.success("Right! Strings are surrounded by quotations, which can be (' ') or (\" \")")
         elif user_guess2 is not None:
@@ -93,6 +93,7 @@ elif the_page == "The basics":
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
 
+# Week 2, should start this I think.
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
