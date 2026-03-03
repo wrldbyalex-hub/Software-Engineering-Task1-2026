@@ -15,27 +15,27 @@ def welcome(): # This function is to make the name input able to accept any name
     if name:
         st.success(f"Hi {name}. Time to start coding.")
 
-st.sidebar.title("Lessons")
+st.sidebar.title("Lessons") 
 
 the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
 page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1 # used len to make it so if I add more pages it will automatically update the total steps.
-if current_step > 0:
-    progress_float = float(current_step / total_steps)
+if current_step > 0: # Makes it so that the percentage bar only moves when you move tabs
+    progress_float = float(current_step / total_steps) # Math
     super_progress_epic = max(0.0, min(progress_float, 1.0))
     
     st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}%**")
     st.sidebar.progress(super_progress_epic)
-else:
+else: # To make it so that the percentage bar is at 0% when your on the home page as your not learning anything fr.
     st.sidebar.write("**Course Progress: 0%**")
-    st.sidebar.progress(0.0)    
+    st.sidebar.progress(0.0) 
 
 if the_page == "Home Page": # Home page
     welcome()
     st.divider()
-    st.markdown("## Why use python?")
+    st.markdown("## Why use python?") # the ## is to affect the size.
     st.subheader("The popularity of the biggest languages (%)")
     st.write("The rest of the languages are not shown, but are the remaining 36% not shown on the cool graph.")
 
@@ -64,7 +64,7 @@ if the_page == "Home Page": # Home page
 # This is the first page. It has quite alot of content, so I used tabs to make it look nicer.
 # I also added some questions to make sure the user understands the code and concepts. 
 elif the_page == "The basics": 
-    basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
+    basics, strings, integers, functions, variables = st.tabs(["Basics", "Strings", "Integers", "Functions", "Variables"])
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     strings.header("Strings")
