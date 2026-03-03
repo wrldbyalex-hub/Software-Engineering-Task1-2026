@@ -15,9 +15,9 @@ def welcome(): # This function is to make the name input able to accept any name
 
 st.sidebar.title("Lessons") 
 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Functions"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
-page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
+page_map = {"Home Page": 0, "The basics": 1, "Functions": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1 # used len to make it so if I add more pages it will automatically update the total steps.
 if current_step > 0: # Makes it so that the percentage bar only moves when you move tabs
@@ -99,6 +99,6 @@ elif the_page == "The basics":
     strings.code("print('Well done on completing your first lesson.')")
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. 
-elif the_page == "Week 2":
-    st.header("Week 2: Data Types")
-    st.info("Coming soon: Learn about different data types in Python!")
+elif the_page == "Functions":
+    st.header("Week 2: Functions")
+    st.info("Coming soon: Learn about functions in Python!")
