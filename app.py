@@ -40,6 +40,10 @@ if the_page == "Home Page":
     chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7}
     st.bar_chart(chart_data_cool)
     st.markdown("Source: [https://www.statista.com/chart/16567/popular-programming-languages/?srsltid=AfmBOooCo-F7T61EWQEkaASlvtsIwpnGKq-qA1K0hLLP64Fs3VogekTE]")
+    what_u_can_do, another_one =st.columns(2)
+    with what_u_can_do:
+        st.subheader("What can you do with python?")
+        st.image("https://f4.bcbits.com/img/a2712205983_16.jpg")
 
 
 elif the_page == "The basics":
