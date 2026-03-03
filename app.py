@@ -57,7 +57,7 @@ if the_page == "Home Page": # Home page
         st.markdown("*Streamlit* is **really** ***cool***.")
         st.markdown('''
             :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool] # aestheticaly pleasing for me
-            :gray[stuff as] :rainbow[shown above]''') # aestheticaly pleasing for me
+            :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me
     st.divider()
     st.subheader("Just remember that this is the **basics**.")
 
@@ -69,9 +69,9 @@ elif the_page == "The basics":
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
-    strings.code("print('Hello, World!')")
-    strings.write("Lets break down this code:" \
-    "`print()` is a function that outputs text to the console." \
+    strings.code("print('Hello, World!')") 
+    strings.write("Lets break down this code: "
+    "`print()` is a function that outputs text to the console. "
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
     user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1") # The index = None is to make it so that the question isn't auto answered.
