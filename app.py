@@ -62,23 +62,23 @@ if the_page == "Home Page":
 elif the_page == "The basics":
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
     if the_page == basics:
-        st.header("Week 1: The Basics") 
-        st.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is your Python.")
+        basics.header("Week 1: The Basics") 
+        basics.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is your Python.")
     elif the_page == strings:
-        st.header("Strings")
-        st.write("Here is a simple example of Python code:")
-        st.code("print('Hello, World!')")
-        st.write("Lets break down this code:" \
+        strings.header("Strings")
+        strings.write("Here is a simple example of Python code:")
+        strings.code("print('Hello, World!')")
+        strings.write("Lets break down this code:" \
         "`print()` is a function that outputs text to the console." \
         "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
-        st.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
+        strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
         user_guess = st.radio("Question: Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None)
         if user_guess:
             if user_guess == "'Hello!'":
-                st.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
-                st.session_state["quiz done"] = True
+                strings.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
+                strings.session_state["quiz done"] = True
         elif user_guess is not None:
-            st.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
+            strings.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
     st.divider()
 
 elif the_page == "Week 2":
