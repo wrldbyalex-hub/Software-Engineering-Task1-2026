@@ -18,7 +18,7 @@ def welcome():
 
 st.sidebar.title("Course Map")
 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key="nav_key")
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key = "nav_key")
 
 page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2}
 current_step = page_map.get(the_page, 0)
@@ -47,7 +47,7 @@ if the_page == "Home Page":
 elif the_page == "The basics":
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
     basics.header("Week 1: The Basics") 
-    basics.info("In this stage, you will learn about the absolute basics of Python, like syntax, variables, and simple data types. This is Python.")
+    basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')")
@@ -59,8 +59,7 @@ elif the_page == "The basics":
     if user_guess:
         if user_guess == "'Hello!'":
             strings.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
-            strings.session_state["quiz done"] = True
-    elif user_guess is not None:
+        elif user_guess is not None:
             strings.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
     st.divider()
     user_guess2 = strings.radio("What are strings surrounded by?", ["brackets", "quotation marks", "parentheses", "Only the '' marks"], index = None, key = "quiz2")
@@ -68,7 +67,7 @@ elif the_page == "The basics":
         if user_guess2 == "quotation marks":
             strings.success("Right! Strings are surrounded by quotation marks, which can be either single (' ') or double (\" \")")
         elif user_guess2 is not None:
-            strings.error("Close, but while single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
+            strings.error("While single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
