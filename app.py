@@ -111,6 +111,41 @@ elif the_page == "The basics":
             integers.success("Right! 42 is an integer because it is a whole number.")
         elif user_guess3 is not None:
             integers.error("Not quite my tempo.")
+    integers.subheader("More things you can do with Integers")
+    integers.write("As mentioned before, you can do math.")
+    integers.code("print(2 + 2)")
+    integers.write("This will print 4, because 2 + 2 = 4.")
+    integers.write("But thats just the start. But before you learn more, you'll need to know this:")
+    different_math_things = {
+        "Sign": [
+            "+", 
+            "-", 
+            "*", 
+            "/", 
+            "**", 
+            "%"
+        ],
+        "Name": ["Addition", "Subtraction", "Multiplication", "Division", "Exponentiation", "Modulo"],
+        "Purpose": [
+            "Adding two numbers together",
+            "Subtracting one number from another",
+            "Multiplying two numbers together",
+            "Dividing one number by another",
+            "Raising a number to the power of another",
+            "Finding the remainder after division"
+        ],
+        "example": [
+            "print(2 + 2) # This will print 4",
+            "print(5 - 3) # This will print 2",
+            "print(4 * 3) # This will print 12",
+            "print(10 / 2) # This will print 5.0",
+            "print(2 ** 3) # This will print 8",
+            "print(10 % 3) # This will print 1"
+        ]
+    }
+    st.table(different_math_things) # A table to show the different math signs, their names, purposes, and examples. I think this is a good way to show this information, because its easy to read and understand.
+    integers.write("As you can see, there are a lot of different math signs, and they all have different purposes.")
+
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Functions":
