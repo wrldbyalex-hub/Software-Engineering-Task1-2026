@@ -44,6 +44,14 @@ if the_page == "Home Page":
     with what_u_can_do:
         st.subheader("What can you do with python?")
         st.image("https://f4.bcbits.com/img/a2712205983_16.jpg")
+    with another_one:
+        st.subheader("...a lot of stuff")
+        st.write("Python is a very diverse language, allowing you to do a bunch of stuff:")
+        st.markdown("-Web development")
+        st.markdown("-App development")
+        st.markdown("-Creating AI")
+        st.markdown("-Game development")
+        st.markdown("-And much more!")
 
 
 elif the_page == "The basics":
