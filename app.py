@@ -48,6 +48,16 @@ if the_page == "Home Page":
     welcome()
     st.divider()
     st.markdown("### Why use python?")
+    st.subheader("The popularity of the biggest languages(in percentage)")
+
+    chart_data_cool = {
+        "Python": 25,
+        "Java": 21,
+        "JavaScript": 8,
+        "C#": 7
+    }
+    st.bar_chart(chart_data_cool)
+    st.markdown("Source: [https://www.statista.com/chart/16567/popular-programming-languages/?srsltid=AfmBOooCo-F7T61EWQEkaASlvtsIwpnGKq-qA1K0hLLP64Fs3VogekTE]")
     
 elif the_page == "The basics":
     st.header("Week 1: The Basics")
