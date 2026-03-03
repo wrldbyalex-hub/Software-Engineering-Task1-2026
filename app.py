@@ -66,12 +66,12 @@ elif the_page == "The basics":
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     basics.write("Python is probably the best programming language to start with, because it reads a lot like english, and can be used for a wide variety of things.")
-    with basics.expander("Strings"):
-        basics.write("In Python, a string is a sequence of characters. Represents text.")
-    with basics.expander("Integers"):
-        basics.write("An integer is a whole number, positive or negative, WITHOUT decimals.")
+    string_basics = basics.expander("Strings") # expanders to make the page look nicer and less cluttered. They can also hold information, so that its more interactive. I like that.
+    string_basics.write('''A string is anything surrounded in either (" "), or (' '). Go to the strings tab to learn more about strings and how they work.''')
+    integers_basics = basics.expander("Integers")
+    integers_basics.write('''An integer is a whole number, positive or negative, WITHOUT decimals.''')
     with basics.expander("Variables"):
-        basics.write("A variable is a named location in memory that stores a value. In Python, you can create variables to hold data and manipulate it throughout your program.")
+        basics.write('''A variable is something named in memory that stores a value. You can create variables to hold data and use it in your program.''')
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')") 
