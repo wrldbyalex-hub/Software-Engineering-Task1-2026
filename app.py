@@ -141,6 +141,10 @@ elif the_page == "The basics":
     integers.table(different_math_things) # A table to show the different math signs, their names, purposes, and examples. I think this is a good way to show this information, because its easy to read and understand.
     integers.write("As you can see, there are a lot of different math signs, and they all have different purposes.")
     integers.code("print('Well done again on completing another section.')")
+    
+    variables.header("Variables")
+    variables.write("Variables are what you store information in. You can put anything in there, and then use it later. For example, you could have \
+                    a variable called `coolguy` and store the string 'Alex' in there, and then use that variable to print it later on.")
 
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
