@@ -47,8 +47,8 @@ else:
 if the_page == "Home Page":
     welcome()
     st.divider()
-    st.markdown("### Why use python?")
-    st.subheader("The popularity of the biggest languages(in percentage)")
+    st.markdown("## Why use python?")
+    st.subheader("The popularity of the biggest languages (%)")
 
     chart_data_cool = {
         "Python": 25,
