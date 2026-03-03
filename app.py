@@ -1,5 +1,3 @@
-from os import name
-
 import streamlit as st
 
 st.set_page_config(page_title="The Python Project", page_icon="🐍") # Would be related to the link if there was one.
@@ -67,6 +65,7 @@ elif the_page == "The basics":
     basics, strings, integers, functions, variables = st.tabs(["Basics", "Strings", "Integers", "Functions", "Variables"])
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
+    basics.write("Python is probably the best programming language to start with, because it reads a lot like english, and can be used for a wide variety of things.")
     strings.header("Strings")
     strings.write("Here is a simple example of Python code:")
     strings.code("print('Hello, World!')") 
