@@ -98,7 +98,7 @@ elif the_page == "The basics":
     strings.write("Therefore, you can use strings for a variety of purposes, but its all up to you.")
     strings.code("print('Well done on completing your first lesson.')")
 
-# Week 2, should start this I think, probably not going to be about data types, despite that devious name. 
+# Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Functions":
     st.header("Week 2: Functions")
     st.info("Coming soon: Learn about functions in Python!")
