@@ -9,7 +9,6 @@ if "quiz done" not in st.session_state:
 if "nav_key" not in st.session_state:
     st.session_state["nav_key"] = "Home Page"
 
-# SECTION 4 REQUIREMENT: Function
 def welcome():
     st.header("Welcome to my Python Course!")
     st.write("This website is being to tell you the basics of python.")
@@ -17,20 +16,11 @@ def welcome():
     if name:
         st.success(f"Hi {name}! Let's get started, and Good luck.")
 
-# Sidebar for organization
 st.sidebar.title("Course Map")
 
-the_page = st.sidebar.radio(
-    "Go to:",
-    ["Home Page", "The basics", "Week 2"],
-    key="nav_key"
-)
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Week 2"], key="nav_key")
 
-page_map = {
-    "Home Page": 0,
-    "The basics": 1,
-    "Week 2": 2
-}
+page_map = {"Home Page": 0, "The basics": 1, "Week 2": 2}
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1
 if current_step > 0:
@@ -43,22 +33,17 @@ else:
     st.sidebar.write("**Course Progress: 0%**")
     st.sidebar.progress(0.0)    
 
-
 if the_page == "Home Page":
     welcome()
     st.divider()
     st.markdown("## Why use python?")
     st.subheader("The popularity of the biggest languages (%)")
 
-    chart_data_cool = {
-        "Python": 25,
-        "Java": 21,
-        "JavaScript": 8,
-        "C#": 7
-    }
+    chart_data_cool = {"Python": 25, "Java": 21, "JavaScript": 8, "C#": 7}
     st.bar_chart(chart_data_cool)
     st.markdown("Source: [https://www.statista.com/chart/16567/popular-programming-languages/?srsltid=AfmBOooCo-F7T61EWQEkaASlvtsIwpnGKq-qA1K0hLLP64Fs3VogekTE]")
-    
+
+
 elif the_page == "The basics":
     basics, strings, integers, syntax_errors, variables = st.tabs(["Basics", "Strings", "Integers", "Syntax Errors", "Variables"])
     basics.header("Week 1: The Basics") 
@@ -70,7 +55,7 @@ elif the_page == "The basics":
     "`print()` is a function that outputs text to the console." \
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
-    user_guess = strings.radio("Question: Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None)
+    user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1")
     if user_guess:
         if user_guess == "'Hello!'":
             strings.success("Correct! 'Hello!' is a string because it is surrounded by quotation marks.")
@@ -78,16 +63,12 @@ elif the_page == "The basics":
     elif user_guess is not None:
             strings.error("Close, but not there yet. A string is a something that is surrounded by quotation marks.")
     st.divider()
-    user_guess2 = strings.radio("Question: What are strings surrounded by?", 
-    ["brackets", "quotation marks", "parentheses", "Only the '' marks"], 
-    index = None,
-    key = "quiz2"
-    )
+    user_guess2 = strings.radio("What are strings surrounded by?", ["brackets", "quotation marks", "parentheses", "Only the '' marks"], index = None, key = "quiz2")
     if user_guess2:
         if user_guess2 == "quotation marks":
             strings.success("Right! Strings are surrounded by quotation marks, which can be either single (' ') or double (\" \")")
-        else:
-            strings.warning("Close, but while single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
+        elif user_guess2 is not None:
+            strings.error("Close, but while single quotation marks (' ') can be used to make strings, double quotation marks (\" \") can also be used.")
 elif the_page == "Week 2":
     st.header("Week 2: Data Types")
     st.info("Coming soon: Learn about different data types in Python!")
