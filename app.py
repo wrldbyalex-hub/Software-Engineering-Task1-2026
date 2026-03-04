@@ -161,6 +161,8 @@ elif the_page == "The basics":
     container.code("sentence_start = 'You have'\nsentence_end = Health'\n\nplayer1_health = '1200'\nplayer2_health = '1100'\n\nprint(sentence_start + player1_health + sentence_end)\nprint(sentence_start + player2_health + sentence_end)")
     container.write("**Console:** You have 1200 Health.")
     container.write("**Console:** You have 1100 Health.")
+    container.divider()
+    container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise the console will do a flip and freak out.")
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Detailed Variables":
