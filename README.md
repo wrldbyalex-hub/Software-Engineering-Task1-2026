@@ -14,6 +14,9 @@
 - **Mar 3:** Added a second question in the strings tab to further someones understanding, with different results happening depending if you choose the right or wrong answer. 
 - **Mar 3:** Updated opening page to have some statistics on python and some examples of the stuff you can do with it. 
 - **Mar 3:** Finished the strings tab and changed the syntax error tab to the Functions tab, as I believe thats more important than alot of those. 
+- **Mar 4:** Finshed the integers tab, with a table that included all main signs that you would use in your code.
+- **Mar 4:** Started on the Variables tab, likely will Finish today and move on to week 2. 
+- **Mar 4:** I designed a scenario-based debugging challenge to test the user's understanding of output functions. By simulating a real-world 'broken' script from a hypothetical game, requires the user to demonstrate syntax application.
 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.

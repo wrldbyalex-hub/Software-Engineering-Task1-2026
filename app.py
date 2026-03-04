@@ -1,3 +1,4 @@
+from code_editor import code_editor
 import streamlit as st
 
 st.set_page_config(page_title="The Python Project", page_icon="🐍") # Would be related to the link if there was one.
@@ -163,6 +164,25 @@ elif the_page == "The basics":
     container.write("**Console:** You have 1100 Health.")
     container.divider()
     container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise the console will do a flip and freak out.")
+
+    test1.header("The Checkpoint")
+    test1.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right," \
+    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.")
+    test1.write("It works like this: They code already there will be OUTSIDE the box, while what you need to write will need to be inside the box.")
+    test1.subheader("Question 1:")
+    test1.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
+    initial_code = "enemy_type = 'monkey'\n#fix the code below this line\n"
+    response = code_editor(initial_code, lang = "python", key = "Question1")
+    if test1.button("Run code"):
+        clean_code = response["text"].strip().replace(" ", "")
+        if "print(enemy_type)" in clean_code: 
+            test1.success("Correct. Well done! The Console outputs **monkey**.")
+        elif "print('enemy_type')" in clean_code or 'print("enemy_type")' in clean_code:
+            test1.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
+        else:
+            test1.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
+        
+        
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Detailed Variables":
