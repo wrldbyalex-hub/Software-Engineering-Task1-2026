@@ -171,14 +171,14 @@ elif the_page == "The basics":
     test1.write("It works like this: They code already there will be OUTSIDE the box, while what you need to write will need to be inside the box.")
     test1.subheader("Question 1:")
     test1.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
-    initial_code = "enemy_type = 'monkey'\n#fix the code below this line\n"
+    initial_code = "enemy_type = 'monkey'"
     response = code_editor(initial_code, lang = "python", key = "Question1")
     if test1.button("Run code"):
         raw_code = response["text"]
-        normalised_code = raw_code.replace(" ", "").replace("\n", "").strip()
-        if "print(enemy_type)" in normalised_code: 
+        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "")
+        if "print(enemy_type)" in scrubbed: 
             test1.success("Correct. Well done!")
-        elif "print('enemy_type')" in normalised_code or 'print("enemy_type")' in normalised_code:
+        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed:
             test1.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
         else:
             test1.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
