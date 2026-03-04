@@ -16,9 +16,9 @@ def welcome(): # This function is to make the name input able to accept any name
 
 st.sidebar.title("Lessons") 
 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Detailed Variables"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Check point"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
-page_map = {"Home Page": 0, "The basics": 1, "Detailed Variables": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
+page_map = {"Home Page": 0, "The basics": 1, "Check point": 2} # percentage bar because i thought it would be cool. I used floats to make the percentage calculationns easier to read.
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1 # used len to make it so if I add more pages it will automatically update the total steps.
 if current_step > 0: # Makes it so that the percentage bar only moves when you move tabs
@@ -63,7 +63,7 @@ if the_page == "Home Page": # Home page
 # This is the first page. It has quite alot of content, so I used tabs to make it look nicer, and also its more organised, because if you just have one page thats alot of scrolling.
 # I also added some questions to make sure the user understands the code and concepts, because like if you read it but don't implement it, your gonna forget it.
 elif the_page == "The basics": 
-    basics, strings, integers, variables, test1 = st.tabs(["Basics", "Strings", "Integers", "Variables", "Test"])
+    basics, strings, integers, variables = st.tabs(["Basics", "Strings", "Integers", "Variables"])
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     basics.write("Python is probably the best programming language to start with, because it reads a lot like english, and can be used for a wide variety of things.")
@@ -146,46 +146,43 @@ elif the_page == "The basics":
     variables.header("Variables")
     variables.write("Variables are what you store information in. You can put anything in there, and then use it later. For example, you could have \
                     a variable called `coolguy` and store the string 'Alex' in there, and then use that variable to print it later on.")
-    variables.code("coolguy = 'Alex'\nprint(coolguy)")
+    variables.code("coolguy = 'Alex'\nprint(coolguy)") # Explains pretty well how a variable works 
     variables.write("This will print 'Alex' to the console, because we stored that string in the variable `coolguy`. You can also store integers in variables, like this:")
-    variables.code("age = 16\nprint(age)")
+    variables.code("age = 16\nprint(age)") # If you haven't picked up on this, the \n just means go down a line or in some cases it makes a space.
     variables.write("This will print 16 to the console, because we stored that integer in the variable `age`. You can also do cool things in a variable, like this:")
     variables.code("alex_score = 17\nxavier_score = 20\nprint(alex_score + xavier_score)")
     variables.write("This will print 37 to the console, because we stored the integers 17 and 20 in the variables, and just added them together like boom.")
-    container = variables.container(border = True)
+    container = variables.container(border = True) # creating a border around the container I made, so that its more aesthetically pleasing. Also has a copy and paste function. 
     container.subheader("Examples of variables")
     container.code("player_health = 1000\narmour_multiplier = 2\narmoured_health = player_health * armour multiplier\nprint(armoured_health)")
-    container.write("**Console:** 2000")
+    container.write("**Console:** 2000") ## ** just means bold
     container.divider()
-    container.code("best_sword = 'Katana'\nprint(best_sword)")
+    container.code("best_sword = 'Katana'\nprint(best_sword)") # Katanas are pretty cool
     container.write("**Console:** Katana")
     container.code("sentence_start = 'You have'\nsentence_end = Health'\n\nplayer1_health = '1200'\nplayer2_health = '1100'\n\nprint(sentence_start + player1_health + sentence_end)\nprint(sentence_start + player2_health + sentence_end)")
-    container.write("**Console:** You have 1200 Health.")
+    container.write("**Console:** You have 1200 Health.") # Console result (if you were actually using a console what would appear)
     container.write("**Console:** You have 1100 Health.")
     container.divider()
-    container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise the console will do a flip and freak out.")
-
-    test1.header("The Checkpoint")
-    test1.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right," \
-    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.")
-    test1.write("It works like this: They code already there will be OUTSIDE the box, while what you need to write will need to be inside the box.")
-    test1.subheader("Question 1:")
-    test1.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
-    initial_code = "enemy_type = 'monkey'"
-    response = code_editor(initial_code, lang = "python", key = "Question1")
-    if test1.button("Run code"):
-        raw_code = response["text"]
-        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "")
-        if "print(enemy_type)" in scrubbed: 
-            test1.success("Correct. Well done!")
-        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed:
-            test1.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
-        else:
-            test1.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
-        
+    container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise the console will do a flip and freak out.") # Side note because I may have forgotten to mention it.
         
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
-elif the_page == "Detailed Variables":
-    st.header("Week 2: Detailed Variables")
-    st.info("Coming soon: Learn about more variables in Python!")
+elif the_page == "Check point":
+    st.header("Check point")
+    st.header("The Checkpoint")
+    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right," \
+    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.")
+    st.write("It works like this: They code already there will be OUTSIDE the box, while what you need to write will need to be inside the box.")
+    st.subheader("Question 1:")
+    st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
+    initial_code = "enemy_type = 'monkey'"
+    response = code_editor(initial_code, lang = "python", key = "Question1")
+    if st.button("Run code"):
+        raw_code = response["text"]
+        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "")
+        if "print(enemy_type)" in scrubbed: 
+            st.success("Correct. Well done!")
+        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed:
+            st.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
+        else:
+            st.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
