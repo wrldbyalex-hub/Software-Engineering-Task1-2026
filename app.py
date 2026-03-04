@@ -1,20 +1,20 @@
-from code_editor import code_editor
-import streamlit as st
+from code_editor import code_editor # plugin 1.1 (add on for streamlit, makes it possible to add editable code blocks so i can make cool questions.)
+import streamlit as st # plugin 1 
 
 st.set_page_config(page_title="The Python Project", page_icon="🐍") # Would be related to the link if there was one.
 st.title("🐍 Python Learning Path") # The title of the page.
 
-if "nav_key" not in st.session_state: 
+if "nav_key" not in st.session_state: # nav_key allows the progam to easily identify where the user is at the current time.
     st.session_state["nav_key"] = "Home Page" # This is to make sure that when using the sidebar buttons, the page doesn't reset to the home page.
 
 def welcome(): # This function is to make the name input able to accept any name and then return that value back to welcome for later use.
     st.header("Welcome to my Python Course!")
     st.write("This website is to teach you some python.")
-    name = st.text_input("What's your name?")
+    name = st.text_input("What's your name?") # the name variable will be defined by whatever the user enters. 
     if name:
-        st.success(f"Hi {name}. Time to start coding.")
+        st.success(f"Hi {name}. Time to start coding.") # f string so the code is more adaptable.
 
-st.sidebar.title("Lessons") 
+st.sidebar.title("Lessons") # Sidebar title
 
 the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Check point"], key = "nav_key") # The sidebar Buttons and the key for streamlit to recognise them.
 
@@ -29,10 +29,10 @@ if current_step > 0: # Makes it so that the percentage bar only moves when you m
     st.sidebar.progress(super_progress_epic)
 else: # To make it so that the percentage bar is at 0% when your on the home page as your not learning anything fr.
     st.sidebar.write("**Course Progress: 0%**")
-    st.sidebar.progress(0.0) 
+    st.sidebar.progress(0.0) # This makes the progress bar defualt to zero when not on a page.
 
 if the_page == "Home Page": # Home page
-    welcome()
+    welcome() # Calls on the function from earlier 
     st.divider()
     st.markdown("## Why use python?") # the ## is to affect the size.
     st.subheader("The popularity of the biggest languages (%)")
@@ -44,11 +44,11 @@ if the_page == "Home Page": # Home page
     what_u_can_do, another_one =st.columns(2) # columns to make the page look nicer and less cluttered, allowing for more content to be shown without it looking bad. Not only does this contrast the page, 
     with what_u_can_do: # but it also allows for it to be more organised.
         st.subheader("What can you do with python?")
-        st.image("https://f4.bcbits.com/img/a2712205983_16.jpg")
+        st.image("https://f4.bcbits.com/img/a2712205983_16.jpg") # Sourced from google.
     with another_one:
         st.subheader("...a lot of stuff")
         st.write("Python is a very diverse language, allowing you to do a bunch of stuff:")
-        st.markdown("-Web development")
+        st.markdown("-Web development") # markdown allows text to be more editable, as you can see below.
         st.markdown("-App development")
         st.markdown("-Creating AI")
         st.markdown("-Game development")
@@ -56,14 +56,14 @@ if the_page == "Home Page": # Home page
         st.markdown("*Streamlit* is **really** ***cool***.")
         st.markdown('''
             :red[As you] :orange[can see,] :green[Python can] :blue[do some] :violet[really cool]
-            :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me, nothing much here lol
+            :gray[stuff as] :rainbow[shown above.]''') # aestheticaly pleasing for me, nothing much here lol. The reason I state the colours outside the [] is so that the writing inside will change colour.
     st.divider()
     st.subheader("Just remember that this is the **basics**. Kinda.")
 
 # This is the first page. It has quite alot of content, so I used tabs to make it look nicer, and also its more organised, because if you just have one page thats alot of scrolling.
 # I also added some questions to make sure the user understands the code and concepts, because like if you read it but don't implement it, your gonna forget it.
 elif the_page == "The basics": 
-    basics, strings, integers, variables = st.tabs(["Basics", "Strings", "Integers", "Variables"])
+    basics, strings, integers, variables = st.tabs(["Basics", "Strings", "Integers", "Variables"]) # Creates tabs for that page, all clickable
     basics.header("Welcome to The Basics") 
     basics.info("Here, you will learn about the absolute basics of Python, like syntax, variables, and different data types. This is basics of Python.")
     basics.write("Python is probably the best programming language to start with, because it reads a lot like english, and can be used for a wide variety of things.")
@@ -81,7 +81,7 @@ elif the_page == "The basics":
     "`print()` is a function that outputs text to the console. "
     "`'Hello, World!'` is a string, represents text (normal writing). In this case, it will display the message 'Hello, World!' when the code is run.")
     strings.write("Notice how `'Hello, World!'` is surrounded by quotation marks? Thats how Python knows its not a variable or function, allowing you to write whatever you want in there without the console getting confused.")
-    user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1") # The index = None is to make it so that the question isn't auto answered.
+    user_guess = strings.radio("Which option here is a string?", ["42", "hi!", "'Hello!'"], index = None, key = "quiz1") # The index = None is to make it so that the question isn't auto answered. Also, .radio is multiple choice questions.
     if user_guess: # This if statement is to make sure that the user has actually made a guess, and not just do nothing like a bum.
         if user_guess == "'Hello!'":
             strings.success("Yeah, 'Hello!' is a string because it is surrounded by quotation marks.")
@@ -108,15 +108,15 @@ elif the_page == "The basics":
     integers.write("This will print the number 42 to the console. However, if you put it in quotation marks, like this:")
     integers.code("print('42')")
     integers.write("It will print the string '42', which isn't a number.")
-    user_guess3 = integers.radio("Which one here is a integer?", ["42", "'42'", "Both of them"], index = None, key = "quiz3")
+    user_guess3 = integers.radio("Which one here is a integer?", ["42", "'42'", "Both of them"], index = None, key = "quiz3") # Key is so the program can easiler find everything.
     if user_guess3: # Do I need to explain?
         if user_guess3 == "42":
             integers.success("Right! 42 is an integer because it is a whole number.")
-        elif user_guess3 is not None:
-            integers.error("Not quite my tempo.")
+        elif user_guess3 is not None: 
+            integers.error("Not quite my tempo.") # Whiplash reference
     integers.subheader("More things you can do with Integers")
     integers.write("As mentioned before, you can do math.")
-    integers.code("print(2 + 2)")
+    integers.code("print(2 + 2)") 
     integers.write("This will print 4, because 2 + 2 = 4.")
     integers.write("But thats just the start. But before you learn more, you'll need to know this:")
     different_math_things = { # This is the start of a table to show different math signs and what they do
@@ -141,7 +141,7 @@ elif the_page == "The basics":
     }
     integers.table(different_math_things) # A table to show the different math signs, their names, purposes, and examples. I think this is a good way to show this information, because its easy to read and understand.
     integers.write("As you can see, there are a lot of different math signs, and they all have different purposes.")
-    integers.code("print('Well done again on completing another section.')")
+    integers.code("print('Well done again on completing another section.')") 
     
     variables.header("Variables")
     variables.write("Variables are what you store information in. You can put anything in there, and then use it later. For example, you could have \
@@ -169,18 +169,18 @@ elif the_page == "The basics":
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Check point":
     st.header("The Checkpoint")
-    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
-    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.")
+    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \ 
+    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # the slash above is just so here I don't have to scroll even further to the side on this code then you already do to read this.
     st.subheader("Question 1:")
-    st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
+    st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.") # Just a silly example fr
     initial_code = "enemy_type = 'monkey'"
     response = code_editor(initial_code, lang = "python", key = "Question1")
-    if st.button("Run code"):
-        raw_code = response["text"]
-        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "")
-        if "print(enemy_type)" in scrubbed: 
-            st.success("Correct. Well done!")
-        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed:
+    if st.button("Run code"): # Button that when pressed, will submit the code which well then check the if/elif/else statement to see if it's right or not.
+        raw_code = response["text"] # I named it raw code because I read about the plugin that I'm using and apperantly this works better with it.
+        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "") # this .replace stuff is so that the question (theorectically) will still accept the answer even if there is a space, 
+        if "print(enemy_type)" in scrubbed: # and that space will be deleted and thus ignored. 
+            st.success("Correct. Well done!") # You might of noticed that i'm using st. Again. This is because there is not tabs on this page, and thus no reason to change it.
+        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed: # More adaptable feedback, with the 'or' statement allowing for different possible outcomes to be accounted for.
             st.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
         else:
             st.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
