@@ -151,7 +151,11 @@ elif the_page == "The basics":
     variables.write("This will print 16 to the console, because we stored that integer in the variable `age`. You can also do cool things in a variable, like this:")
     variables.code("alex_score = 17\nxavier_score = 20\nprint(alex_score + xavier_score)")
     variables.write("This will print 37 to the console, because we stored the integers 17 and 20 in the variables, and just added them together like boom.")
-
+    row1 = variables.columns(3)
+    row2 = variables.columns(3)
+    for variables_examples in row1 + row2:
+        tile = variables.container(height = 100)
+        tile.title(":ballon:")
 
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
