@@ -169,12 +169,12 @@ elif the_page == "The basics":
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Check point":
     st.header("The Checkpoint")
-    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \ 
-    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # the slash above is just so here I don't have to scroll even further to the side on this code then you already do to read this.
+    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
+    "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # The slash above is so you don't have to scroll even further than you already are to read it, not as much for the website.
     st.subheader("Question 1:")
     st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.") # Just a silly example fr
     initial_code = "enemy_type = 'monkey'"
-    response = code_editor(initial_code, lang = "python", key = "Question1")
+    response = code_editor(initial_code, lang = "Python", key = "Question1") # code_editor is white because it isn't a local variable, rather imported from code_editor.
     if st.button("Run code"): # Button that when pressed, will submit the code which well then check the if/elif/else statement to see if it's right or not.
         raw_code = response["text"] # I named it raw code because I read about the plugin that I'm using and apperantly this works better with it.
         scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "") # this .replace stuff is so that the question (theorectically) will still accept the answer even if there is a space, 
