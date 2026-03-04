@@ -168,11 +168,9 @@ elif the_page == "The basics":
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Check point":
-    st.header("Check point")
     st.header("The Checkpoint")
-    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right," \
+    st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
     "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.")
-    st.write("It works like this: They code already there will be OUTSIDE the box, while what you need to write will need to be inside the box.")
     st.subheader("Question 1:")
     st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.")
     initial_code = "enemy_type = 'monkey'"
