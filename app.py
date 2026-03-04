@@ -174,10 +174,11 @@ elif the_page == "The basics":
     initial_code = "enemy_type = 'monkey'\n#fix the code below this line\n"
     response = code_editor(initial_code, lang = "python", key = "Question1")
     if test1.button("Run code"):
-        clean_code = response["text"].strip().replace(" ", "")
-        if "print(enemy_type)" in clean_code: 
-            test1.success("Correct. Well done! The Console outputs **monkey**.")
-        elif "print('enemy_type')" in clean_code or 'print("enemy_type")' in clean_code:
+        raw_code = response["text"]
+        normalised_code = raw_code.replace(" ", "").replace("\n", "").strip()
+        if "print(enemy_type)" in normalised_code: 
+            test1.success("Correct. Well done!")
+        elif "print('enemy_type')" in normalised_code or 'print("enemy_type")' in normalised_code:
             test1.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
         else:
             test1.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
