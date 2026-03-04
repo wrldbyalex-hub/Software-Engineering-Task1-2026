@@ -112,8 +112,10 @@ elif the_page == "The basics":
     if user_guess3: # Do I need to explain?
         if user_guess3 == "42":
             integers.success("Right! 42 is an integer because it is a whole number.")
-        elif user_guess3 is not None: 
-            integers.error("Not quite my tempo.") # Whiplash reference
+        elif user_guess3 == "'42'":
+            integers.error("Are you rushing or are you dragging?") # Whiplash reference
+        else:
+            integers.error("not quite my tempo")
     integers.subheader("More things you can do with Integers")
     integers.write("As mentioned before, you can do math.")
     integers.code("print(2 + 2)") 
