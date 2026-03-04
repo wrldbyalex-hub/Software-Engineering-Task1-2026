@@ -151,12 +151,16 @@ elif the_page == "The basics":
     variables.write("This will print 16 to the console, because we stored that integer in the variable `age`. You can also do cool things in a variable, like this:")
     variables.code("alex_score = 17\nxavier_score = 20\nprint(alex_score + xavier_score)")
     variables.write("This will print 37 to the console, because we stored the integers 17 and 20 in the variables, and just added them together like boom.")
-    row1 = variables.columns(3)
-    row2 = variables.columns(3)
-    for variables_examples in row1 + row2:
-        tile = variables.container(height = 100)
-        tile.title(":ballon:")
-
+    container = variables.container(border = True)
+    container.subheader("Examples of variables")
+    container.code("player_health = 1000\narmour_multiplier = 2\narmoured_health = player_health * armour multiplier\nprint(armoured_health)")
+    container.write("**Console:** 2000")
+    container.divider()
+    container.code("best_sword = 'Katana'\nprint(best_sword)")
+    container.write("**Console:** Katana")
+    container.code("sentence_start = 'You have'\nsentence_end = Health'\n\nplayer1_health = '1200'\nplayer2_health = '1100'\n\nprint(sentence_start + player1_health + sentence_end)\nprint(sentence_start + player2_health + sentence_end)")
+    container.write("**Console:** You have 1200 Health.")
+    container.write("**Console:** You have 1100 Health.")
 
 # Week 2, should start this I think, probably not going to be about data types, despite that devious name. Edit: I changed it, rip data types.
 elif the_page == "Detailed Variables":
