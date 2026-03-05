@@ -1,5 +1,7 @@
 from code_editor import code_editor # plugin 1.1 (add on for streamlit, makes it possible to add editable code blocks so i can make cool questions.)
 import streamlit as st # plugin 1 
+import io # plugin 1.2
+import contextlib # plugin 1.3
 
 st.set_page_config(page_title="The Python Project", page_icon="🐍") # Would be related to the link if there was one.
 st.title("🐍 Python Learning Path") # The title of the page.
@@ -173,16 +175,44 @@ elif the_page == "Check point":
     st.header("The Checkpoint")
     st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
     "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # The slash above is so you don't have to scroll even further than you already are to read it, not as much for the website.
+    st.write("### How it works:")
+    st.write("1.Read the question ")
+    st.write("2.Write/click your answer")
+    st.write("3.If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
     st.subheader("Question 1:")
+    st.caption("Note: Don't worry if the brackets are highlighted red, that doesn't do anything.")
     st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.") # Just a silly example fr
-    initial_code = "enemy_type = 'monkey'"
-    response = code_editor(initial_code, lang = "Python", key = "Question1") # code_editor is white because it isn't a local variable, rather imported from code_editor.
-    if st.button("Run code"): # Button that when pressed, will submit the code which well then check the if/elif/else statement to see if it's right or not.
-        raw_code = response["text"] # I named it raw code because I read about the plugin that I'm using and apperantly this works better with it.
-        scrubbed = raw_code.replace(" ", "").replace("\n", "").replace("'", "").replace('"', "") # this .replace stuff is so that the question (theorectically) will still accept the answer even if there is a space, 
-        if "print(enemy_type)" in scrubbed: # and that space will be deleted and thus ignored. 
-            st.success("Correct. Well done!") # You might of noticed that i'm using st. Again. This is because there is not tabs on this page, and thus no reason to change it.
-        elif "print('enemy_type')" in scrubbed or 'print("enemy_type")' in scrubbed: # More adaptable feedback, with the 'or' statement allowing for different possible outcomes to be accounted for.
-            st.error("Close! But you put quotes around enemy_type. That tells Python to print the *word* 'enemy_type' instead of the variable's *value*.")
-        else:
-            st.error("Almost! Check your code. You need to print enemy_type. Remember, python is case sensitive. Enemy_type is not the same as enemy_type.")
+
+    btns = [{ # This is a list, with other things like true/false variables inside it, which is why its [{}] and not just []. btns is also short for buttons
+        "name": "Run",
+        "feather": "Play", #, just for a note, I wrote it this way because its easier to write all of this AND also is just easier to read and thus edit.
+        "primary": True,
+        "hasText": True,
+        "commands": ["submit"],
+        "style": {"bottom": "0.44rem", "right": "0.4rem"} # this is where the button will appear, so that the person can run the code. pretty Epic right?
+    }]
+    
+    st.write("#### Task: Print the variable `enemy_type` to the console.") # ### makes it a header
+
+    initial_code = "enemy_type = 'monkey'\n# Write your code below\n" # this is what will already be in the editor when the user opens up the page.
+    response = code_editor(initial_code, lang = "python", buttons = btns) # 
+
+    if response['type'] == "submit": # if they submit the code that they entered with the below button
+        user_code = response['text']
+        output_buffer = io.StringIO()
+        try: # the try statement allows the code to run even if it could result in a error, which is why I'm using it. 
+            with contextlib.redirect_stdout(output_buffer):
+                exec(user_code, {}) # exec means execute
+        
+            printed_val = output_buffer.getvalue().strip() # output_buffer.getvalue sets apart some extra ram to catch everything the user is submitting. 
+            # The .getvalue stores it and then pulls the result as one string, and the strip() removes all the empty space, like a space at the end of the code.
+            # the printed_val is a new variable that can be assigned to whatever the user rights, but the if statement under detirmines if it is actually what we want.
+            if printed_val == "monkey": # val is value, but i'm lazy when typing
+                st.success(f"Perfect! You printed: {printed_val}")
+            elif printed_val == "": # if the code didn't actually print anything
+                st.warning("The code ran, but nothing was printed. Did you use print()?")
+            else:
+                st.error(f"Almost! You printed '{printed_val}', but we expected 'monkey'.") 
+            
+        except Exception as e: # e just means error, so this will show if the code doesn't work, not if its just wrong. 
+            st.error(f"Execution Error: {e}") # will tell them that the code exploded and died
