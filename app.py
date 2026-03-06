@@ -176,9 +176,9 @@ elif the_page == "Check point":
     st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
     "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # The slash above is so you don't have to scroll even further than you already are to read it, not as much for the website.
     st.write("### How it works:")
-    st.write("1.Read the question ")
-    st.write("2.Write/click your answer")
-    st.write("3.If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
+    st.write("1. Read the question ")
+    st.write("2. Write/click your answer")
+    st.write("3. If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
     st.subheader("Question 1:")
     st.caption("Note: Don't worry if the brackets are highlighted red, that doesn't do anything.")
     st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.") # Just a silly example fr
@@ -195,13 +195,13 @@ elif the_page == "Check point":
     st.write("#### Task: Print the variable `enemy_type` to the console.") # ### makes it a header
 
     initial_code = "enemy_type = 'monkey'\n# Write your code below\n" # this is what will already be in the editor when the user opens up the page.
-    response = code_editor(initial_code, lang = "python", buttons = btns) # 
-
+    response = code_editor(initial_code, lang = "python", buttons = btns) # code_editor is a plugin for streamlit, and is required for what I want to do.
+                                        # lang just tells the code that this is python.
     if response['type'] == "submit": # if they submit the code that they entered with the below button
         user_code = response['text']
-        output_buffer = io.StringIO()
+        output_buffer = io.StringIO() # calls on the streamlit again to save the code that they enter and use it later. 
         try: # the try statement allows the code to run even if it could result in a error, which is why I'm using it. 
-            with contextlib.redirect_stdout(output_buffer):
+            with contextlib.redirect_stdout(output_buffer): # Anything that would be written in the console will be put into the output buffer
                 exec(user_code, {}) # exec means execute
         
             printed_val = output_buffer.getvalue().strip() # output_buffer.getvalue sets apart some extra ram to catch everything the user is submitting. 
@@ -213,6 +213,16 @@ elif the_page == "Check point":
                 st.warning("The code ran, but nothing was printed. Did you use print()?")
             else:
                 st.error(f"Almost! You printed '{printed_val}', but we expected 'monkey'.") 
-            
+            # Just adding that the expect fucntion is used with try, to stop the console from tweaking out that someone put in faulty code. 
         except Exception as e: # e just means error, so this will show if the code doesn't work, not if its just wrong. 
+            # To add onto the except function, I'm using the universal (not a variable created by me) function called Exception which will, after its paused by except, send a missle at the code to destroy it. 
             st.error(f"Execution Error: {e}") # will tell them that the code exploded and died
+        
+        user_guess4 = st.radio("Question 2: Which here is a string?", ["'I'm so good at coding'", "I'm so good at coding", "(i'm so good at coding)"], index = None, key = "quiz4")
+        if user_guess4:
+            if user_guess4 == "'I'm so good at coding'":
+                st.success("You are good at coding!")
+            elif user_guess4 is not None:
+                st.error("You are kind of good at coding maybe?")
+
+        
