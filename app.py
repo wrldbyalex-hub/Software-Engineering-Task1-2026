@@ -175,6 +175,7 @@ elif the_page == "Check point":
     st.header("The Checkpoint")
     st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
     "and feel free to re-attempt any Questions, thats why they are still editable after getting it wrong/right.") # The slash above is so you don't have to scroll even further than you already are to read it, not as much for the website.
+    st.caption("Sorry for the scrolling.")
     st.write("### How it works:")
     st.write("1. Read the question ")
     st.write("2. Write/click your answer")
@@ -202,7 +203,7 @@ elif the_page == "Check point":
         output_buffer = io.StringIO() # calls on the streamlit again to save the code that they enter and use it later. 
         try: # the try statement allows the code to run even if it could result in a error, which is why I'm using it. 
             with contextlib.redirect_stdout(output_buffer): # Anything that would be written in the console will be put into the output buffer
-                exec(user_code, {}) # exec means execute
+                exec(user_code, {}) # exec means execute, and then the {} is just the stuff from before
         
             printed_val = output_buffer.getvalue().strip() # output_buffer.getvalue sets apart some extra ram to catch everything the user is submitting. 
             # The .getvalue stores it and then pulls the result as one string, and the strip() removes all the empty space, like a space at the end of the code.
@@ -219,10 +220,15 @@ elif the_page == "Check point":
             st.error(f"Execution Error: {e}") # will tell them that the code exploded and died
         
         user_guess4 = st.radio("Question 2: Which here is a string?", ["'I'm so good at coding'", "I'm so good at coding", "(i'm so good at coding)"], index = None, key = "quiz4")
-        if user_guess4:
+        if user_guess4: # I feel bad for the amount of scrolling.
             if user_guess4 == "'I'm so good at coding'":
                 st.success("You are good at coding!")
             elif user_guess4 is not None:
                 st.error("You are kind of good at coding maybe?")
 
-        
+            user_guess5 = st.radio("Question 3: True or false; You can use the print() function to add numbers together.", ["True", "False"], index = None, key = "quiz5")
+            if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER 
+                # the question is finished.
+                st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") # Just simple Questions fr.
+            elif user_guess5 is not None:
+                st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.")
