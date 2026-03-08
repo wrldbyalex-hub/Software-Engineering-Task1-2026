@@ -20,3 +20,6 @@ def init_db():
         """)
         conn.commit()
         conn.close()
+
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
