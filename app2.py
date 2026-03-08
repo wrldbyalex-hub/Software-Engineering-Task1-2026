@@ -23,3 +23,13 @@ def init_db():
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
+
+def check_credentials(username, password):
+    conn = sqlite3.connect(DataBase_File)
+    c = conn.cursor()
+    c.exucute("SELECT password_hash FROM users WHERE username = ?", (username,))
+    result = c.fetchone()
+    conn.close()
+    if result:
+        return result[0] == hash_password(password)
+    return False
