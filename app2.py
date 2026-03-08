@@ -6,6 +6,7 @@ import io # plugin 1.2
 import contextlib # plugin 1.3
 from code_editor import code_editor # plugin 1.1 (add on for streamlit, makes it possible to add editable code blocks so i can make cool questions.)
 
+# --- THE DATA FREAK BASE ------------------------------------------------------------------------------------------------------------
 DataBase_File = "users.db"
 
 def init_db():
@@ -33,3 +34,11 @@ def check_credentials(username, password):
     if result:
         return result[0] == hash_password(password)
     return False
+
+def user_exists(username):
+    conn = sqlite3.connect(DataBase_File)
+    c = conn.cursor()
+    c.execute("SELECT 1 FROM users WHERE username = ?")
+    exists = c.fetchone() is not None 
+    conn.close()
+    return exists
