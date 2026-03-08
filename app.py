@@ -227,8 +227,13 @@ elif the_page == "Check point":
                 st.error("You are kind of good at coding maybe?")
 
             user_guess5 = st.radio("Question 3: True or false; You can use the print() function to add numbers together.", ["True", "False"], index = None, key = "quiz5")
-            if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER 
-                # the question is finished.
+            if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER the question is finished.
                 st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") # Just simple Questions fr.
-            elif user_guess5 is not None:
-                st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.")
+            elif user_guess5 is not None: # I also just want to repeat myself here but is not None stops the code from being auto answered. How? Because the index is none, and if it isn't, then this will show.
+                st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.") # Math is crazy
+                
+                user_guess6 = st.radio("Question 4: Which Symbol represents multiplication?", ["`x`", "`**`", "`*`", "`%`"], index = None, key = "quiz6")
+                if user_guess6 == "`*`":
+                    st.success("Correct, in python the Multiplication symbol is *.")
+                elif user_guess6 is not None:
+                    st.error("Good try, but thats just not the answer. Fr.")
