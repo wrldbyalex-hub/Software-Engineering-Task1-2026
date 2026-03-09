@@ -52,9 +52,21 @@ if "db_initialized" not in st.session_state.logged_in:
     init_db()
     st.session.state["db_initialized"] = True # I'm not sure if i need to use the american spelling, but I just want my code to work
 
-# --- The login stuff ------------------------------------------------------------------------------------------------------------
+# --- The login stuff ---------------------------------------------------------------------------------------------------------------
 if "logged in" not in st.session_state:
     st.session_state.logged_in = False
 if "username_input" not in st.session_state:    
     st.session_state.username_input = " "
+
+# --- What would happen if they are NOT logged in + what it shows --------------------------------------------------------------------
+if not st.session_state.logged_in:
+    st.title("🐍 They Python Project - Login")
+
+    st.write("Please sign in to access the lessons.")
+
+    # Making sure the username stuff is shown always on this page
+    username = st.text_input("Username", value=st.session_state.username_input, key="login_username")
+
+    # To do: Make it so that the password field and stuff only shows when the username has been entered. 
+
 
