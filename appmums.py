@@ -50,7 +50,7 @@ def user_exists(username): # Check if the username is already being used
     return exists
 
 # --- FUNCTION FOR HOME CONTENT ---------------------------------------------------------
-def show_home_content():
+def show_home_content(): 
     st.divider()
     st.markdown("## Why use python?")
     st.subheader("The popularity of the biggest languages (%)")
@@ -87,16 +87,18 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 # --- LOGGED OUT: show login + home content below it --------------
-if not st.session_state.logged_in:
-    st.title("🐍 The Python Project - Login")
+if not st.session_state.logged_in: # If the user isn't logged in it shows the login/sign up screen. 
+    st.title("🐍 The Python Project - Login") 
     st.write("Please sign in to access the lessons.")
 
-    # Simplified input fields to make sure they always show up
+    # input fields to make sure they always show up
     username = st.text_input("Username", key="login_username")
+    # text box for username, and key prevents the value reseting on return 
     password = st.text_input("Password", type="password", key="login_password")
+    # The password field makes it appear as dots (type="password")
 
     # Creating columns for buttons
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)        # Splits the screen into 2 different coloums 
 
     with col1:
         if st.button("Login", type="primary", use_container_width=True):
