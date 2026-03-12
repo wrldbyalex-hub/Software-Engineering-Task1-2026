@@ -144,7 +144,9 @@ if current_step > 0:
 else: 
     st.sidebar.write("**Course Progress: 0%**")
     st.sidebar.progress(0.0)
-# --- Pages ---------------------------------------------------
+
+# --- Pages ---------------------------------------------------------
+
 if the_page == "Home Page":
     show_home_content()
 elif the_page == "The basics":
@@ -312,12 +314,11 @@ elif the_page == "Check point":
                 else:
                     st.error(f"Almost! You printed '{printed_val}', but we expected 'monkey'.") 
             # Just adding that the expect fucntion is used with try, to stop the console from tweaking out that someone put in faulty code. 
-            except Exception as e: # e just means error, so this will show if the code doesn't work, not if its just wrong. 
-            # To add onto the except function, I'm using the universal (not a variable created by me) function called Exception which will, after its paused by except, send a missle at the code to destroy it. 
+            except Exception as e: 
                 st.error(f"Execution Error: {e}") # will tell them that the code exploded and died
         
             user_guess4 = st.radio("Question 2: Which here is a string?", ["'I'm so good at coding'", "I'm so good at coding", "(i'm so good at coding)"], index = None, key = "quiz4")
-            if user_guess4: # I feel bad for the amount of scrolling.
+            if user_guess4: 
                 if user_guess4 == "'I'm so good at coding'":
                     st.success("You are good at coding!")
                 elif user_guess4 is not None:
@@ -326,9 +327,9 @@ elif the_page == "Check point":
                 user_guess5 = st.radio("Question 3: True or false; You can use the print() function to add numbers together.", ["True", "False"], index = None, key = "quiz5")
                 if user_guess5:
                     if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER the question is finished.
-                        st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") # Just simple Questions fr.
-                    elif user_guess5 is not None: # I also just want to repeat myself here but is not None stops the code from being auto answered. How? Because the index is none, and if it isn't, then this will show.
-                        st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.") # Math is crazy
+                        st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") 
+                    elif user_guess5 is not None:
+                        st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.")
                 
                     user_guess6 = st.radio("Question 4: Which Symbol represents multiplication?", ["`x`", "`**`", "`*`", "`%`"], index = None, key = "quiz6")
                     if user_guess6:
