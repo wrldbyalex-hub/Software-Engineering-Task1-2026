@@ -100,19 +100,22 @@ if not st.session_state.logged_in: # If the user isn't logged in it shows the lo
     # Creating columns for buttons
     col1, col2 = st.columns(2)        # Splits the screen into 2 different coloums 
 
-    with col1:
+    with col1:                  # The left coloum 
         if st.button("Login", type="primary", use_container_width=True):
+            # Big button that fills the width of columns 
             if check_credentials(username.strip(), password):
-                st.session_state.logged_in = True
-                st.session_state.username = username.strip()
-                st.rerun()
+                # strip() removes accidental spaces (like at the end or sum)
+                st.session_state.logged_in = True # Changes the status of the user to logged in 
+                st.session_state.username = username.strip() # remembers who logged in 
+                st.rerun() # Forces streamlit to refresh the app 
             else:
-                st.error("Incorrect username or password :(")
+                st.error("Incorrect username or password :(") # If they get that stuff wrong
     
-    with col2: 
+    with col2:                          # Right column         
         if st.button("Sign up", use_container_width=True):
             if not username.strip() or len(password) < 4:
                 st.error("Username required & Password must be 4+ chars")
+                # Basic validation 
             elif user_exists(username.strip()):
                 st.error("Username already taken.")
             else: 
@@ -120,15 +123,17 @@ if not st.session_state.logged_in: # If the user isn't logged in it shows the lo
                 c = conn.cursor()
                 c.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)",
                            (username.strip(), hash_password(password)))
-                conn.commit()
+                # inserts a new user and saves the password as a hash (for the data base def at the top)
+                conn.commit()                       # Saves it 
                 conn.close()
                 st.success("Account Created! Now you can log in.")
+                # The account was created 
 
     st.info("Sign up if you're new here!")
     
     # Show the "Why use Python" content below the login box
-    show_home_content()
-    st.stop()
+    show_home_content()            # Calls on another function 
+    st.stop()                   # Stops the exuction and makes it so the other parts of the app won't run unless the status is logged in.
 
 # --- LOGGED IN: full experience with sidebar ---------------
 st.title(f"🐍 The Python Project")
@@ -140,10 +145,10 @@ the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Check point"]
 # --- PROGRESS BAR LOGIC -------------------------
 page_map = {"Home Page": 0, "The basics": 1, "Check point": 2} 
 current_step = page_map.get(the_page, 0)
-total_steps = len(page_map) - 1 
-
+total_steps = len(page_map) - 1 # minus 1 to get rid of home page 
+# len grabs the amount of different variables (or strings in this case and turns it into a number) 
 if current_step > 0: 
-    progress_float = float(current_step / total_steps) 
+    progress_float = float(current_step / total_steps) # the len is then used here, allowing for more pages to be added and this code still working
     # Keep it between 0.0 and 1.0 so it doesn't crash
     super_progress_epic = max(0.0, min(progress_float, 1.0))
     st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}%**")
@@ -351,6 +356,6 @@ elif the_page == "Check point":
 
 # --- Log out ---------------------------------------------------------
 if st.sidebar.button("Logout"):
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
-    st.rerun()
+    for key in list(st.session_state.keys()): # Finds the key that is currently being used
+        del st.session_state[key] # deletes it do log them out 
+    st.rerun() # Sends them back to the home page 
