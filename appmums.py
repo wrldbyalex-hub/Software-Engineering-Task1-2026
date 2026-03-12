@@ -8,39 +8,44 @@ import contextlib
 from code_editor import code_editor 
 
 # --- THE DATA BASE ------------------------------------------------------------------------------------------------------------
-DB_FILE = "users.db"
+DB_FILE = "users.db" # name of the SQLite database file that will be created in the same folder
 
-def init_db():
-    if not os.path.exists(DB_FILE):
-        conn = sqlite3.connect(DB_FILE)
-        c = conn.cursor()
+def init_db(): # Function that creates the database + table (only if they don't already exist)
+    if not os.path.exists(DB_FILE): # check if the file users.db already exists
+        conn = sqlite3.connect(DB_FILE) # create/connect to the database file (users.db)
+        c = conn.cursor() # create a cursor  to run SQL commands
         c.execute("""
                   CREATE TABLE IF NOT EXISTS users (
                       username TEXT PRIMARY KEY,
                       password_hash TEXT NOT NULL
                   )
-        """)
-        conn.commit()
-        conn.close()
+        """) # end of SQL
+        conn.commit() # actually save (write) the changes
+        conn.close() # Closes database connection 
 
-def hash_password(password):
+def hash_password(password): # Converts password into fixed length hash
     return hashlib.sha256(password.encode()).hexdigest()
+    # .encode() turns string into bytes 
+    # sha256 creates 256 bit hash
+    # .hexdigest() turns hash into hexadecimal string (hopefully)
 
-def check_credentials(username, password):
-    conn = sqlite3.connect(DB_FILE)
-    c = conn.cursor()
+def check_credentials(username, password): # Checks if the username and password that was entered is actually correct
+    conn = sqlite3.connect(DB_FILE) # Creates a connection to data base
+    c = conn.cursor() # creates a cursor for SQL
     c.execute("SELECT password_hash FROM users WHERE username = ?", (username,))
-    result = c.fetchone()
-    conn.close()
-    if result:
-        return result[0] == hash_password(password)
-    return False
+    # ? Is a placeholder (shocker) to prevent SQL from touching it 
+    result = c.fetchone() # Get the first thing that matches 
+    conn.close() # Stop looking 
+    if result: # If they found a match 
+        return result[0] == hash_password(password) # Compare the stuff entered to the stuff in the data base 
+    return False # if their isn't a user found they can't login 
 
-def user_exists(username):
-    conn = sqlite3.connect(DB_FILE)
+def user_exists(username): # Check if the username is already being used 
+    conn = sqlite3.connect(DB_FILE) 
     c = conn.cursor()
     c.execute("SELECT 1 FROM users WHERE username = ?", (username,))
-    exists = c.fetchone() is not None 
+    # We don't need actual data, select 1 is prettly light weight or whatever you call it
+    exists = c.fetchone() is not None # If the row exists fetchone() returns the stuff (tuple (data structure and stuff)) but if its not None then it returns false.
     conn.close()
     return exists
 
