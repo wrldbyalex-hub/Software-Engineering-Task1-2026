@@ -291,68 +291,94 @@ elif the_page == "Check point":
         st.write("1. Read the question ")
         st.write("2. Write/click your answer")
         st.write("3. If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
-        st.subheader("Question 1:")
-        st.caption("Note: Don't worry if the brackets are highlighted red, that doesn't do anything.")
-        st.write("The Game Fantasy Quest wants their variable enemy_type to equal 'monkey', but can't figure out why it won't print to the console. Use the space below to fix their code.") # Just a silly example fr
 
-        btns = [{ # This is a list, with other things like true/false variables inside it, which is why its [{}] and not just []. btns is also short for buttons
-            "name": "Run",
-            "feather": "Play", #, just for a note, I wrote it this way because its easier to write all of this AND also is just easier to read and thus edit.
-            "primary": True,
-            "hasText": True,
-            "commands": ["submit"],
-            "style": {"bottom": "0.44rem", "right": "0.4rem"} # this is where the button will appear, so that the person can run the code. pretty Epic right?
-        }]
+        def coding_task(
+            title: str,
+            initial_code: str,
+            expected_output: str,
+            success_message: str = "Perfect!",
+            fail_message: str = "Almost! But not quite.",
+            empty_message: str = "Nothing was printed. Did you forget print()?",
+            lang: str = "python"
+        ):
+            st.markdown(f"#### {title}")
     
-        st.write("#### Task: Print the variable `enemy_type` to the console.") # ### makes it a header
-
-        initial_code = "enemy_type = 'monkey'\n# Write your code below\n" # this is what will already be in the editor when the user opens up the page.
-        response = code_editor(initial_code, lang = "python", buttons = btns) # code_editor is a plugin for streamlit, and is required for what I want to do.
-                                        # lang just tells the code that this is python.
-        if response['type'] == "submit": # if they submit the code that they entered with the below button
-            user_code = response['text']
-            output_buffer = io.StringIO() # calls on the streamlit again to save the code that they enter and use it later. 
-            try: # the try statement allows the code to run even if it could result in a error, which is why I'm using it. 
-                with contextlib.redirect_stdout(output_buffer): # Anything that would be written in the console will be put into the output buffer
-                    exec(user_code, {}) # exec means execute, and then the {} is just the stuff from before
+            response = code_editor(
+                initial_code,
+                lang=lang,
+                buttons=["submit"] 
+            )
+    
+            if response["type"] == "submit":
+                user_code = response["text"]
+                output_buffer = io.StringIO()
         
-                printed_val = output_buffer.getvalue().strip() # output_buffer.getvalue sets apart some extra ram to catch everything the user is submitting. 
-            # The .getvalue stores it and then pulls the result as one string, and the strip() removes all the empty space, like a space at the end of the code.
-            # the printed_val is a new variable that can be assigned to whatever the user rights, but the if statement under detirmines if it is actually what we want.
-                if printed_val == "monkey": # val is value, but i'm lazy when typing
-                    st.success(f"Perfect! You printed: {printed_val}")
-                elif printed_val == "": # if the code didn't actually print anything
-                    st.warning("The code ran, but nothing was printed. Did you use print()?")
-                else:
-                    st.error(f"Almost! You printed '{printed_val}', but we expected 'monkey'.") 
-            # Just adding that the expect fucntion is used with try, to stop the console from tweaking out that someone put in faulty code. 
-            except Exception as e: 
-                st.error(f"Execution Error: {e}") # will tell them that the code exploded and died
-        
-            user_guess4 = st.radio("Question 2: Which here is a string?", ["'I'm so good at coding'", "I'm so good at coding", "(i'm so good at coding)"], index = None, key = "quiz4")
-            if user_guess4: 
-                if user_guess4 == "'I'm so good at coding'":
-                    st.success("You are good at coding!")
-                elif user_guess4 is not None:
-                    st.error("You are kind of good at coding maybe?")
-
-                user_guess5 = st.radio("Question 3: True or false; You can use the print() function to add numbers together.", ["True", "False"], index = None, key = "quiz5")
-                if user_guess5:
-                    if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER the question is finished.
-                        st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") 
-                    elif user_guess5 is not None:
-                        st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.")
+                try:
+                    with contextlib.redirect_stdout(output_buffer):
+                    # Very restricted globals — prevents most dangerous stuff
+                        exec(user_code, {"__builtins__": {}}, {})
                 
-                    user_guess6 = st.radio("Question 4: Which Symbol represents multiplication?", ["`x`", "`**`", "`*`", "`%`"], index = None, key = "quiz6")
-                    if user_guess6:
-                        if user_guess6 == "`*`":
-                            st.success("Correct, in python the Multiplication symbol is *.")
-                        elif user_guess6 == "`x`":
-                            st.error("Good try, but thats a variable, not a symbol!")
-                        elif user_guess6 == "`**`":
-                            st.error("This is to the power of, not multiplication.")
-                        elif user_guess6 == "`%`":
-                            st.error("This is a symbol to find the remainder of a division question.")
+                    printed = output_buffer.getvalue().rstrip()
+            
+                    if printed == expected_output:
+                        st.success(f"{success_message} → {printed!r}")
+                    elif not printed:
+                        st.warning(empty_message)
+                    else:
+                        st.error(f"{fail_message} You printed {printed!r}, expected {expected_output!r}")
+                
+                except Exception as e:
+                    st.error(f"Code crashed:\n```\n{type(e).__name__}: {e}\n```")
+
+
+        coding_task(
+            title="Print the variable `enemy_type` to the console.",
+            initial_code="""enemy_type = 'monkey'
+        # Write your code below this line""",
+            expected_output="monkey"
+        )
+
+        coding_task(
+            title="Print your player's name",
+            initial_code="""player_name = "Alex"
+        # ↓ your code here""",
+            expected_output="Alex",
+            success_message="Nice! The hero has a name."
+        )
+
+        coding_task(
+            title="Show the current score",
+            initial_code="""score = 420
+        # print it below""",
+            expected_output="420"
+        )
+        
+        user_guess4 = st.radio("Question 2: Which here is a string?", ["'I'm so good at coding'", "I'm so good at coding", "(i'm so good at coding)"], index = None, key = "quiz4")
+        if user_guess4: 
+            if user_guess4 == "'I'm so good at coding'":
+                st.success("You are good at coding!")
+            elif user_guess4 is not None:
+                st.error("You are kind of good at coding maybe?")
+
+            user_guess5 = st.radio("Question 3: True or false; You can use the print() function to add numbers together.", ["True", "False"], index = None, key = "quiz5")
+            if user_guess5:
+                if user_guess5 == "True": # If you look closly, you'll see that the each question is further indented into the code. This is to make it so that they appear AFTER the question is finished.
+                    st.success("Correct! You can add numbers together. print(1 + 1) Would Print 2.") 
+                elif user_guess5 is not None:
+                    st.error("Incorrect! Python can print numbers together, e.g print(5+2) would Print 7.")
+                
+                user_guess6 = st.radio("Question 4: Which Symbol represents multiplication?", ["`x`", "`**`", "`*`", "`%`"], index = None, key = "quiz6")
+                if user_guess6:
+                    if user_guess6 == "`*`":
+                        st.success("Correct, in python the Multiplication symbol is *.")
+                    elif user_guess6 == "`x`":
+                        st.error("Good try, but thats a variable, not a symbol!")
+                    elif user_guess6 == "`**`":
+                        st.error("This is to the power of, not multiplication.")
+                    elif user_guess6 == "`%`":
+                        st.error("This is a symbol to find the remainder of a division question.")
+                    
+
 
 # --- Log out ---------------------------------------------------------
 if st.sidebar.button("Logout"):

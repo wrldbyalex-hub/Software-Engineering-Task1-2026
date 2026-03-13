@@ -19,5 +19,6 @@
 - **Mar 4:** I designed a scenario-based debugging challenge to test the user's understanding of output functions. By simulating a real-world 'broken' script from a hypothetical game, requires the user to demonstrate syntax application.
 - **Mar 5:** Currently trying to fix the problem with the script, as when the user enters the answer, even if its right it will say its wrong. My current theory is something is wrong with the brackets, as they are highlighted red on the website. 
 - **Mar 6-13:** Added a Data Base called DB, also organised code into sections with titles for easy use, created log in and sign up page, as well as only showing the home page and not the content when logged out, and showing content when logged in. Furthermore, I also added a log out button on the side bar if they want to log out for some reason. Lastly, I make it so on the checkpoint page, questions appear after you do the question prior to it. 
+- **Mar 13:** Changed the coding questions into a function to allow for easier use of it, and to allow to use it for different questions.
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.
