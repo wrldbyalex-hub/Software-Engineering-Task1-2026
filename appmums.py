@@ -292,7 +292,7 @@ elif the_page == "Check point":
         st.write("2. Write/click your answer")
         st.write("3. If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
 # --- CODING QUESTION FUNCTION -----
-        def coding_task(
+        def coding_task(   # all this does is allow me to use this formula again with different questions 
             title: str,
             initial_code: str,
             expected_output: str,
@@ -304,31 +304,31 @@ elif the_page == "Check point":
             st.markdown(f"#### {title}")
     
             response = code_editor(
-                initial_code,
-                lang=lang,
-                buttons=["submit"] 
+                initial_code, # The code that will already be there 
+                lang=lang, # Tells editor thats its python
+                buttons=["submit"] # Submit button 
             )
-    
-            if response["type"] == "submit":
-                user_code = response["text"]
-                output_buffer = io.StringIO()
+            # only runs the logic if the user clicks submit
+            if response["type"] == "submit": 
+                user_code = response["text"] # Calls whatever the hell they just typed 
+                output_buffer = io.StringIO() # creates a memory of what they just typed in output buffer 
         
-                try:
+                try:                    # try is used to catch errors before the program crashes 
                     with contextlib.redirect_stdout(output_buffer):
-                    # Very restricted globals — prevents most dangerous stuff
-                        exec(user_code, {"__builtins__": {}}, {})
+                    # Very restricted globals
+                        exec(user_code, {"__builtins__": {}}, {}) # what the user wrote, no pre existing variables and stops access to dangourous python plugins
                 
-                    printed = output_buffer.getvalue().rstrip()
+                    printed = output_buffer.getvalue().rstrip() # grabs everything printed and gets rid of random spaces
             
-                    if printed == expected_output:
+                    if printed == expected_output: # if the thing they wrote matches what the console should of printed 
                         st.success(f"{success_message} → {printed!r}")
-                    elif not printed:
+                    elif not printed: # Nothing happened
                         st.warning(empty_message)
-                    else:
+                    else: # its wrong 
                         st.error(f"{fail_message} You printed {printed!r}, expected {expected_output!r}")
                 
-                except Exception as e:
-                    st.error(f"Code crashed:\n```\n{type(e).__name__}: {e}\n```")
+                except Exception as e: # you crashed the thing but my epic coding saved it 
+                    st.error(f"Code crashed:\n```\n{type(e).__name__}: {e}\n```") # tells them what crashed it 
 # --- back to normal questions ---------------
 
         coding_task(
