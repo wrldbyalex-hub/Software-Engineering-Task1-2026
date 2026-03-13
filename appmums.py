@@ -291,7 +291,7 @@ elif the_page == "Check point":
         st.write("1. Read the question ")
         st.write("2. Write/click your answer")
         st.write("3. If its a console question (like the first one), when hovering over the final line of code, there will be a 'run' button on the side. Click that for your result. ")
-
+# --- CODING QUESTION FUNCTION -----
         def coding_task(
             title: str,
             initial_code: str,
@@ -329,7 +329,7 @@ elif the_page == "Check point":
                 
                 except Exception as e:
                     st.error(f"Code crashed:\n```\n{type(e).__name__}: {e}\n```")
-
+# --- back to normal questions ---------------
 
         coding_task(
             title="Print the variable `enemy_type` to the console.",
