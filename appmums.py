@@ -140,10 +140,10 @@ st.title(f"🐍 The Python Project")
 st.write(f"Welcome, {st.session_state.get('username', 'Coder')}")
 
 st.sidebar.title("Lessons") 
-the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Check point"], key="nav_key") 
+the_page = st.sidebar.radio("Go to:", ["Home Page", "The basics", "Check point", "Conclusion"], key="nav_key") 
 
 # --- PROGRESS BAR LOGIC -------------------------
-page_map = {"Home Page": 0, "The basics": 1, "Check point": 2} 
+page_map = {"Home Page": 0, "The basics": 1, "Check point": 2, "Conclusion": 3} 
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1 # minus 1 to get rid of home page 
 # len grabs the amount of different variables (or strings in this case and turns it into a number) 
@@ -283,6 +283,7 @@ elif the_page == "The basics":
     container.divider()
     container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise they will be counted as multiple different variables.") # Side note because I may have forgotten to mention it.
 
+# --- TEST --------------------------------------------------
 elif the_page == "Check point":
         st.header("The Checkpoint")
         st.write("You've come far! Well done. But now is the time to put your knowledge to the test. Hopefully you get it all right, " \
@@ -357,6 +358,86 @@ elif the_page == "Check point":
                         elif user_guess6 == "`%`":
                             st.error("This is a symbol to find the remainder of a division question.")
 
+                        st.subheader("Question 5:")
+                        st.caption("Note: Don't worry if the brackets are highlighted red, that doesn't do anything.")
+                        st.write("The Game Fantasy Quest has yet another problem! Make it so that their code can find the difference between Player1 score and Player2 score.")
+                        initial_code2 = "player1_score = 2124\nplayer2_score = 1203\n# Write your code below\n" 
+                        response2 = code_editor(initial_code2, lang = "python", buttons = btns) 
+                                       
+                        if response2['type'] == "submit": 
+                            user_code2 = response2['text']
+                            output_buffer2 = io.StringIO() # literally the same as question 1 
+                            try:
+                                with contextlib.redirect_stdout(output_buffer2): 
+                                    exec(user_code2, {}) 
+        
+                                printed_val2 = output_buffer2.getvalue().strip() 
+                                if printed_val2 == "921":
+                                    st.success(f"Perfect! You printed: {printed_val2}")
+                                elif printed_val2 == "":
+                                    st.warning("The code ran, but nothing was printed. Did you use print()?")
+                                else:
+                                    st.error(f"Almost! You printed '{printed_val2}', but that isn't right.") 
+                            except Exception as e2: 
+                                st.error(f"Execution Error: {e2}") 
+                            st.divider()
+                            st.write("Well done. I know it wasn't that many quesstions, but these were simple enough to encompass what you learnt; Strings, variables and integers." \
+                            "Remember, there is so, so much more. This is only the basics.")
+elif the_page == "Conclusion":
+    st.header("Goodbye")
+    st.write("You have come quite a bit from 0 knowledge to this. I tried to make it so it was as simple as possible, and I hope I was able to do that for you.")
+    st.write("But we're at the end now. You've finished the basics, but coding, Whether you think this is a good thing or not, coding never ends. There is always more you can learn- more you can do, and thats one of the beautiful things about it. ")
+    st.write("Heres a little tease: F-strings. Functions. Syntax Errors. If you want to learn more, the first 3 chapters of a cool website called ***boot.dev*** will help you continue your learning path.")
+    st.caption("You can always do it again though")
+    st.subheader("Really cool button:")
+
+    if "count" not in st.session_state: # if aren't there
+        st.session_state.count = 0
+
+    col1, col2, col3 = st.columns([1, 2, 1])   # middle column is wider
+
+    with col1:
+        pass  # empty left spacer
+
+    with col2:
+        left, mid, right = st.columns([1, 3, 1])   # extra centering inside
+
+        with mid:
+            if st.button("Click me! 🔥", use_container_width=True, type="primary"):
+                st.session_state.count += 1 # += adds onto the total 
+
+    with col3:
+        if st.button("Reset"): # if the user for some reason wants to reset their useless number
+            st.session_state.count = 0
+            st.rerun()
+
+    st.markdown(
+        f"""
+        <div style="
+            text-align: center;
+            font-size: 6rem;
+            font-weight: bold;
+            color: #00ff99;
+            margin: 2rem 0;
+            line-height: 1;
+        ">
+            {st.session_state.count}
+        </div>
+        """,
+        unsafe_allow_html=True
+    ) # HTML is rendered due to the unsafe_allow variable
+
+    st.markdown(
+        "<p style='text-align: center; color: #aaaaaa; font-size: 1.2rem; margin-top: -1rem;'>"
+        "times clicked</p>",
+        unsafe_allow_html=True
+    )
+
+    if st.session_state.count >= 100:
+        st.write("what are you doing bro")
+    
+    if st.session_state.count>= 200:
+        st.write("This isn't the point of the website bro")
 # --- Log out ---------------------------------------------------------
 if st.sidebar.button("Logout"):
     for key in list(st.session_state.keys()): # Finds the key that is currently being used
