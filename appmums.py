@@ -281,7 +281,7 @@ elif the_page == "The basics":
     container.write("**Console:** You have 1200 Health.") # Console result (if you were actually using a console what would appear)
     container.write("**Console:** You have 1100 Health.")
     container.divider()
-    container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise the console will do a flip and freak out.") # Side note because I may have forgotten to mention it.
+    container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise they will be counted as multiple different variables.") # Side note because I may have forgotten to mention it.
 
 elif the_page == "Check point":
         st.header("The Checkpoint")
