@@ -26,4 +26,4 @@
 
 ## NOTE 
 - to run the code (for me at least (on mac)) use:
-python3 -m streamlit run appmums.py 
+python3 -m streamlit run app.py 
