@@ -7,7 +7,7 @@ import io
 import contextlib
 from code_editor import code_editor
 
-# Import your lesson pages
+# Import lesson pages 
 import basics
 import checkpoint
 import conclusion
