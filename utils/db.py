@@ -1,24 +1,20 @@
 import sqlite3
 import hashlib
-import os
-
-# --- Data base ------------------------------------------
 
 DB_FILE = "users.db"
 
 def init_db():
-    """Initialises the database and creates the users table if it doesn't exist."""
-    if not os.path.exists(DB_FILE):
-        conn = sqlite3.connect(DB_FILE)
-        c = conn.cursor()
-        c.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                username TEXT PRIMARY KEY,
-                password_hash TEXT NOT NULL
-            )
-        """)
-        conn.commit()
-        conn.close()
+    """Initializes the database and creates the users table if it doesn't exist."""
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            username TEXT PRIMARY KEY,
+            password_hash TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
 
 def hash_password(password: str) -> str:
     """Hashes a password using SHA-256."""
@@ -31,7 +27,6 @@ def check_credentials(username: str, password: str) -> bool:
     c.execute("SELECT password_hash FROM users WHERE username = ?", (username,))
     result = c.fetchone()
     conn.close()
-
     if result:
         return result[0] == hash_password(password)
     return False
