@@ -17,4 +17,4 @@ def show_home_content():
 
     with col2:
         st.subheader("...a lot of stuff")
-        st.markdown("- Web development\n- App development\n- AI\n- Games\n- Data Science")
+        st.markdown("- Web development\n- App development\n- AI Creation\n- Game Development\n- Data Science\n- Robotics\n- Task automation\n\n- Interactive tools\n- and so much more.")

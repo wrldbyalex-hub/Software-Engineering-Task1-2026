@@ -17,7 +17,7 @@ def init_db():
     conn.close()
 
 def hash_password(password: str) -> str:
-    """Hashes a password using SHA-256."""
+    """Hashes a password using SHA256."""
     return hashlib.sha256(password.encode()).hexdigest()
 
 def check_credentials(username: str, password: str) -> bool:
