@@ -77,16 +77,22 @@ the_page = st.sidebar.radio(
 page_map = {"Home Page": 0, "The basics": 1, "Check point": 2, "Conclusion": 3}
 current_step = page_map.get(the_page, 0)
 total_steps = len(page_map) - 1
-st.sidebar.write(f"Logged in as: {st.session_state.username}")
+st.sidebar.write(f"Logged in as: {st.session_state.username}") # calls on the username in the data base that is used in st.session state.
 
 if current_step > 0:
-    progress_float = float(current_step / total_steps)
-    super_progress_epic = max(0.0, min(progress_float, 1.0))
-    st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}%**")
+    progress_float = float(current_step / total_steps) # uses the float function to help imitate the percentage formula
+    super_progress_epic = max(0.0, min(progress_float, 1.0)) # this thing 
+    st.sidebar.write(f"**Course Progress: {int(super_progress_epic * 100)}%**") # and this thing
     st.sidebar.progress(super_progress_epic)
 else:
     st.sidebar.write("**Course Progress: 0%**")
     st.sidebar.progress(0.0)
+
+# --- Log out ---------------------------------------------------------
+if st.sidebar.button("Logout"):
+    for key in list(st.session_state.keys()):
+        del st.session_state[key]
+    st.rerun()
 
 # --- Pages ---------------------------------------------------------
 if the_page == "Home Page":
@@ -98,8 +104,3 @@ elif the_page == "Check point":
 elif the_page == "Conclusion":
     conclusion.show()
 
-# --- Log out ---------------------------------------------------------
-if st.sidebar.button("Logout"):
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
-    st.rerun()

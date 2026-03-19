@@ -32,7 +32,7 @@ def show():
 
         with mid:
             if st.button("Click me! 🔥", use_container_width=True, type="primary"):
-                st.session_state.count += 1
+                st.session_state.count += 1 # adds onto total and then makes it the new total to do the same thing agian. 
 
     with col3:
         if st.button("Reset"):
@@ -67,5 +67,5 @@ def show():
     if st.session_state.count >= 200:
         st.write("This isn't the point of the website bro") 
     
-    if st.session_state.connt >= 500:
+    if st.session_state.count >= 500:
         st.write("You win. You don't get a prize, but you win if that matters.") # bored people can go far. 
