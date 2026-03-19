@@ -2,6 +2,8 @@
 **Student Name:** Alex Wearne
 **Target Audience:** Secondary Students
 
+## How to use
+
 ## Project Logbook (Progress Tracking)
 - **Feb 27:** Started repository and set up project structure.
 - **Feb 27:** Implemented the first structural element for the user welcome screen and established the sidebar.
@@ -21,7 +23,7 @@
 - **Mar 6-13:** Added a Data Base called DB, also organised code into sections with titles for easy use, created log in and sign up page, as well as only showing the home page and not the content when logged out, and showing content when logged in. Furthermore, I also added a log out button on the side bar if they want to log out for some reason. Lastly, I make it so on the checkpoint page, questions appear after you do the question prior to it. 
 - **Mar 13:** Changed the coding questions into a function to allow for easier use of it, and to allow to use it for different questions.
 - **Mar 17:** Updated code. I also created new tabs and folders to call in in app.py so it isn't one long line of code and really unorganised. This was done to raise my marks (as read in the marking criteria)
-- **Mar 18:** Bug fixes, such as the login button not appearing when on the conclusion page, and me missspelling the 'count' and 'connt'
+- **Mar 18:** Bug fixes, such as the login button not appearing when on the conclusion page, and me missspelling the 'count' and 'connt'. Furthermore, I also changed the checkpoint page to show the next question after answering the question, not getting it right. 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.
 
