@@ -1,5 +1,5 @@
 import streamlit as st
-
+from utils.db import get_user_quiz_history
 def show():
 
     st.header("Goodbye")
@@ -8,6 +8,15 @@ def show():
     st.write("Heres a little tease: F-strings. Functions. Syntax Errors. If you want to learn more, the first 3 chapters of a cool website called ***boot.dev*** will help you continue your learning path.")
     st.caption("You can always do it again though")
 
+    st.subheader("Your Recent Quiz Results")
+    history = get_user_quiz_history(st.session_state.username)
+    if history:
+        for row in history:
+            ts, sc, tot, pct = row
+            st.write(f"{ts} → {sc}/{tot} ({pct}%)")
+    else:
+        st.info("Complete a quiz to see your history!")
+        
     st.subheader("Really cool button:")
 
     if "count" not in st.session_state:

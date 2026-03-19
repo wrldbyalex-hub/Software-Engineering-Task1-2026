@@ -2,8 +2,12 @@ import streamlit as st
 import io
 import contextlib
 from code_editor import code_editor
+from utils.db import save_quiz_result
 
 def show():
+    if "score" not in st.session_state:
+        st.session_state.score = 0
+        st.session_state.quiz_completed = False
     """Checkpoint page with interactive coding challenges."""
 
     st.header("The Checkpoint")
@@ -47,6 +51,7 @@ def show():
 
             if printed_val == "monkey":
                 st.success(f"Perfect! You printed: {printed_val}")
+                st.session_state.score += 1
             elif printed_val == "":
                 st.warning("Nothing printed. Did you use print()?") 
             else:
@@ -66,6 +71,7 @@ def show():
         if user_guess4:
             if user_guess4 == "'I'm so good at coding'":
                 st.success("Correct!")
+                st.session_state.score += 1
             else:
                 st.error("Not quite.")
 
@@ -80,6 +86,7 @@ def show():
             if user_guess5:
                 if user_guess5 == "True":
                     st.success("Correct!")
+                    st.session_state.score += 1
                 else:
                     st.error("Incorrect!")
 
@@ -94,6 +101,7 @@ def show():
                 if user_guess6:
                     if user_guess6 == "`*`":
                         st.success("Correct!")
+                        st.session_state.score += 1
                     else:
                         st.error("Wrong symbol.")
 
@@ -121,6 +129,7 @@ def show():
 
                             if printed_val2 == "921":
                                 st.success(f"Perfect! You printed: {printed_val2}")
+                                st.session_state.score += 1
                             elif printed_val2 == "":
                                 st.warning("Nothing printed.")
                             else:
@@ -131,3 +140,20 @@ def show():
 
                         st.divider()
                         st.write("Nice work. You've covered the basics.")
+
+
+                        if not st.session_state.quiz_completed:
+                            current_user = st.session_state.username
+                            total_questions = 5  
+
+                            save_quiz_result(
+                            username=current_user,
+                            score=st.session_state.score,
+                            total=total_questions
+                            )
+    
+                            st.session_state.quiz_completed = True
+                            st.rerun()  # refresh to show success message
+
+                            if st.session_state.quiz_completed:
+                                st.success(f"Quiz complete! Your score {st.session_state.score}/{total_questions} saved.")
