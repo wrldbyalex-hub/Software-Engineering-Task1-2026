@@ -105,9 +105,9 @@ def show():
     variables.header("Variables")
     variables.write("Variables are what you store information in. You can put anything in there, and then use it later. For example, you could have \
                     a variable called `coolguy` and store the string 'Alex' in there, and then use that variable to print it later on.")
-    variables.code("coolguy = 'Alex'\nprint(coolguy)") # Explains pretty well how a variable works 
+    variables.code("coolguy = 'Alex'\nprint(coolguy)") 
     variables.write("This will print 'Alex' to the console, because we stored that string in the variable `coolguy`. You can also store integers in variables, like this:")
-    variables.code("age = 16\nprint(age)") # If you haven't picked up on this, the \n just means go down a line or in some cases it makes a space.
+    variables.code("age = 16\nprint(age)") # the \n just means go down a line or in some cases it makes a space.
     variables.write("This will print 16 to the console, because we stored that integer in the variable `age`. You can also do cool things in a variable, like this:")
     variables.code("alex_score = 17\nxavier_score = 20\nprint(alex_score + xavier_score)")
     variables.write("This will print 37 to the console, because we stored the integers 17 and 20 in the variables, and just added them together like boom.")
@@ -118,10 +118,10 @@ def show():
     container.code("player_health = 1000\narmour_multiplier = 2\narmoured_health = player_health * armour multiplier\nprint(armoured_health)")
     container.write("**Console:** 2000") ## ** just means bold
     container.divider()
-    container.code("best_sword = 'Katana'\nprint(best_sword)") # Katanas are pretty cool
+    container.code("best_sword = 'Katana'\nprint(best_sword)") 
     container.write("**Console:** Katana")
     container.code("sentence_start = 'You have'\nsentence_end = Health'\n\nplayer1_health = '1200'\nplayer2_health = '1100'\n\nprint(sentence_start + player1_health + sentence_end)\nprint(sentence_start + player2_health + sentence_end)")
-    container.write("**Console:** You have 1200 Health.") # Console result (if you were actually using a console what would appear)
+    container.write("**Console:** You have 1200 Health.")
     container.write("**Console:** You have 1100 Health.")
     container.divider()
     container.write("Note: When making a variable with multiple words, you MUST use a _ (underscore) to connect those words, otherwise they will be counted as multiple different variables.") # Side note because I may have forgotten to mention it.

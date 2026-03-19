@@ -9,11 +9,11 @@ def show():
     st.caption("You can always do it again though")
 
     st.subheader("Your Recent Quiz Results")
-    history = get_user_quiz_history(st.session_state.username)
+    history = get_user_quiz_history(st.session_state.username) # calls on the function in db to check the time it was recorded
     if history:
         for row in history:
             ts, sc, tot, pct = row
-            st.write(f"{ts} → {sc}/{tot} ({pct}%)")
+            st.write(f"{ts} → {sc}/{tot} ({pct}%)") # just lists it (timestamp, score, total and percentage)
     else:
         st.info("Complete a quiz to see your history!")
         
@@ -22,9 +22,9 @@ def show():
     if "count" not in st.session_state:
         st.session_state.count = 0
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 2, 1]) # adds 3 different columns to make sure the button is in the middle for fine clicking
 
-    with col1:
+    with col1: # skips over it without breaking the code 
         pass
 
     with col2:
@@ -59,10 +59,13 @@ def show():
         "<p style='text-align: center; color: #aaaaaa; font-size: 1.2rem; margin-top: -1rem;'>"
         "times clicked</p>",
         unsafe_allow_html=True
-    )
+    ) # had to use ai for the exacts of this line, as i'm not very well versed in the sizes and formating. 
 
     if st.session_state.count >= 100:
         st.write("what are you doing bro")
     
     if st.session_state.count >= 200:
-        st.write("This isn't the point of the website bro")
+        st.write("This isn't the point of the website bro") 
+    
+    if st.session_state.connt >= 500:
+        st.write("You win. You don't get a prize, but you win if that matters.") # bored people can go far. 

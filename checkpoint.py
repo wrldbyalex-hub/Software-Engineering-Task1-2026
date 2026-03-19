@@ -12,15 +12,15 @@ def show():
     if "quiz_completed" not in st.session_state:
         st.session_state.quiz_completed = False
     if "q1_correct" not in st.session_state:
-        st.session_state.q1_correct = False
+        st.session_state.q1_correct = False # q1_correct and all the others a boolean values 
     if "q2_correct" not in st.session_state:
-        st.session_state.q2_correct = False
+        st.session_state.q2_correct = False # I'm using them to control what the page shows at a time and then use that data:
     if "q3_correct" not in st.session_state:
-        st.session_state.q3_correct = False
+        st.session_state.q3_correct = False # to record wrong or right questions
     if "q4_correct" not in st.session_state:
-        st.session_state.q4_correct = False
+        st.session_state.q4_correct = False # upload them at the end to show user score 
     if "q5_correct" not in st.session_state:
-        st.session_state.q5_correct = False
+        st.session_state.q5_correct = False # and to also help capture what time they answered it. 
 
     st.header("The Checkpoint")
     st.write("You've come far! Well done. But now is the time to put your knowledge to the test.")
@@ -36,7 +36,7 @@ def show():
     initial_code = "enemy_type = 'monkey'\n# Write your code below\n"
     response = code_editor(initial_code, lang="python", buttons=btns, key="q1_editor")
 
-    if response['type'] == "submit" and not st.session_state.q1_correct: # updated with q1 
+    if response['type'] == "submit" and not st.session_state.q1_correct: # updated with q1, as seen above 
         user_code = response['text']
         output_buffer = io.StringIO()
         try: # string buffer to capture whatever code they entered 
