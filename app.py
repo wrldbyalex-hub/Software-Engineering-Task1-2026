@@ -11,7 +11,8 @@ from code_editor import code_editor
 import basics
 import checkpoint
 import conclusion
-from utils import helpers, db  
+from utils import helpers, db
+from utils.db import init_db, init_quiz_results_table
 
 # --- THE MAIN STUFF ----------------------------------------------------------------------------------------
 
@@ -19,8 +20,9 @@ st.set_page_config(page_title="The Python Project", page_icon="🐍")
 
 # Initialize session state & db
 if "db_initialized" not in st.session_state:
-    db.init_db()
-    st.session_state["db_initialized"] = True
+    init_db()
+    init_quiz_results_table()     
+    st.session_state["db_initialized"] = True 
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
