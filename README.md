@@ -1,6 +1,6 @@
 # Software Engineering Task 1 - Educational Python App
-**Student Name:** Alex Wearne
-**Target Audience:** Secondary Students
+- **Student Name:** Alex Wearne
+- **Target Audience:** Secondary Students
 
 ## How to use
 - To run the code (for me at least (on mac)) use (in the terminal on vscode):
