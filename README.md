@@ -3,6 +3,8 @@
 **Target Audience:** Secondary Students
 
 ## How to use
+- To run the code (for me at least (on mac)) use (in the terminal on vscode):
+python3 -m streamlit run app.py 
 
 ## Project Logbook (Progress Tracking)
 - **Feb 27:** Started repository and set up project structure.
@@ -26,7 +28,3 @@
 - **Mar 18:** Bug fixes, such as the login button not appearing when on the conclusion page, and me missspelling the 'count' and 'connt'. Furthermore, I also changed the checkpoint page to show the next question after answering the question, not getting it right. 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks.
-
-## NOTE 
-- to run the code (for me at least (on mac)) use:
-python3 -m streamlit run app.py 
