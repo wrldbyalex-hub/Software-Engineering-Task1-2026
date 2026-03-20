@@ -8,11 +8,11 @@ def show():
     """Checkpoint page with different coding questions and challenges"""
     if "score" not in st.session_state:
         st.session_state.score = 0
-    if "quiz_completed" not in st.session_state:
+    if "quiz_completed" not in st.session_state: # these will check if the question is answered
         st.session_state.quiz_completed = False
-    if "q1_submitted" not in st.session_state:
+    if "q1_submitted" not in st.session_state: # if it is, the next question will show
         st.session_state.q1_submitted = False
-    if "q2_submitted" not in st.session_state:
+    if "q2_submitted" not in st.session_state: # Otherwise they won't until the current question is answered 
         st.session_state.q2_submitted = False
     if "q3_submitted" not in st.session_state:
         st.session_state.q3_submitted = False
@@ -21,7 +21,9 @@ def show():
     if "q5_submitted" not in st.session_state:
         st.session_state.q5_submitted = False
     if "correct_questions" not in st.session_state:
-        st.session_state.correct_questions = set()
+        st.session_state.correct_questions = set() # checks if the key correct question already exists 
+        # if no it creates a new set and stores the data there
+        # if yes it does nothing and keeps whatever value is already there 
 
     st.header("The Checkpoint")
     st.write("You've come far! Well done. But now is the time to put your knowledge to the test.")
@@ -48,8 +50,8 @@ def show():
             printed_val = output_buffer.getvalue().strip()
             if printed_val == "monkey" and 1 not in st.session_state.correct_questions:
                 st.success(f"Perfect! You printed: {printed_val}")
-                st.session_state.score += 1
-                st.session_state.correct_questions.add(1)
+                st.session_state.score += 1 # adds the question to the correct questions section
+                st.session_state.correct_questions.add(1) # marks question as correct
             elif printed_val == "":
                 st.warning("Nothing printed. Did you use print()?")
             else:

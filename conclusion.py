@@ -1,7 +1,7 @@
 import streamlit as st
 from utils.db import get_user_quiz_history
 def show():
-
+    """All of the content for the goodbye page, including the cool button and all results of checkpoint.py"""
     st.header("Goodbye")
     st.write("You have come quite a bit from 0 knowledge to this. I tried to make it so it was as simple as possible, and I hope I was able to do that for you.")
     st.write("But we're at the end now. You've finished the basics, but coding, Whether you think this is a good thing or not, coding never ends. There is always more you can learn- more you can do, and thats one of the beautiful things about it. ")
@@ -59,7 +59,7 @@ def show():
         "<p style='text-align: center; color: #aaaaaa; font-size: 1.2rem; margin-top: -1rem;'>"
         "times clicked</p>",
         unsafe_allow_html=True
-    ) # had to use ai for the exacts of this line, as i'm not very well versed in the sizes and formating. 
+    ) # had to use ai for the exacts of this line, as i'm not very well versed in the sizes and formating. (1.2rem??)
 
     if st.session_state.count >= 100:
         st.write("what are you doing bro")
