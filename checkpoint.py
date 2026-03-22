@@ -121,7 +121,7 @@ def show():
     # Q5 after Q4
     if st.session_state.q4_submitted:
         st.subheader("Question 5:")
-        st.write("Find the difference between scores.")
+        st.write("Find the difference between scores and print it to the console.")
         initial_code2 = "player1_score = 2124\nplayer2_score = 1203\n# Write your code below\n"
         response2 = code_editor(initial_code2, lang="python", buttons=btns, key="q5_editor")
 

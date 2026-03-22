@@ -3,8 +3,22 @@
 - **Target Audience:** Secondary Students
 
 ## How to use
+- Before running the code, you need to install streamlit and the plugin code_editor:
+    - pip install streamlit (if that doesn't work then try using python3 -m install streamlit)
+    - pip install streamlit_code_editor (if that doesn't work use python3 -m pip install streamlit_code_editor)
 - To run the code (for me at least (on mac)) use (in the terminal on vscode):
-python3 -m streamlit run app.py 
+    - python3 -m streamlit run app.py 
+- Once in the website, it should be self explanitory, but here are the key features:
+    - You will first see a log in screen. As you don't have a account, type whatever username you want and the password you want. 
+    - Then click sign up. Once that is done, use those same credentials to log in. 
+    - Then you will be able to acess all the content, not just the homepage. To access each page, just click on the name of it in the sidebar, which will then direct you to said page. 
+    - Some pages will have questions, which you will need to click to interact with. 
+        - There are two types of questions; multiple choice and terminal questions.
+        - Multiple choice questions can be answered by simply clicking on the answer you think is right. 
+        - Terminal Questions will require you to click the code box, and then type the required code. On the final line, there will be a submit button on the right, and you will need to click this to submit it.
+    - There is a test page, and questions on that will be answered with no haptics or feedback until you get to the final question. Each question appears after you answer the previous one, causing you to only see 1 and the start. Once you've done all of them, simply click the submit button to see your results. 
+        - They will be stored on the final page, as well as any other times you take the test with the date and time you did it. 
+    - Some pages will also have openable boxes or interactable graphs. Just click on a box to open it, and click on any buttons on the graph or scroll with your cursor on it to adjust the numbers shown. 
 
 ## Project Logbook (Progress Tracking)
 - **Feb 27:** Started repository and set up project structure.
@@ -26,5 +40,6 @@ python3 -m streamlit run app.py
 - **Mar 13:** Changed the coding questions into a function to allow for easier use of it, and to allow to use it for different questions.
 - **Mar 17:** Updated code. I also created new tabs and folders to call in in app.py so it isn't one long line of code and really unorganised. This was done to raise my marks (as read in the marking criteria)
 - **Mar 18:** Bug fixes, such as the login button not appearing when on the conclusion page, and me missspelling the 'count' and 'connt'. Furthermore, I also changed the checkpoint page to show the next question after answering the question, not getting it right. 
+
 ## Requirements Definition
-- Goal: Create an interactive web interface to teach Python in 4 weeks.
+- Goal: Create an interactive web interface to teach Python in 4 weeks, with questions to test the knowledge that was learnt.
