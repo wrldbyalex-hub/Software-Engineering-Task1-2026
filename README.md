@@ -40,6 +40,7 @@
 - **Mar 13:** Changed the coding questions into a function to allow for easier use of it, and to allow to use it for different questions.
 - **Mar 17:** Updated code. I also created new tabs and folders to call in in app.py so it isn't one long line of code and really unorganised. This was done to raise my marks (as read in the marking criteria)
 - **Mar 18:** Bug fixes, such as the login button not appearing when on the conclusion page, and me missspelling the 'count' and 'connt'. Furthermore, I also changed the checkpoint page to show the next question after answering the question, not getting it right. 
+- **Mar 20:** Finished Project, will now start to work on portfolio. 
 
 ## Requirements Definition
 - Goal: Create an interactive web interface to teach Python in 4 weeks, with questions to test the knowledge that was learnt.
