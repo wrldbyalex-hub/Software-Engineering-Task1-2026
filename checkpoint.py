@@ -44,9 +44,15 @@ def show():
     if response['type'] == "submit" and not st.session_state.q1_submitted:
         user_code = response['text']
         output_buffer = io.StringIO()
+        # Safe environment - no access to dangerous builtins or modules
+        safe_globals = {
+            "__builtins__": {},          
+            "print": print
+        }
+
         try:
             with contextlib.redirect_stdout(output_buffer):
-                exec(user_code, {})
+                exec(user_code, safe_globals)
             printed_val = output_buffer.getvalue().strip()
             if printed_val == "monkey" and 1 not in st.session_state.correct_questions:
                 st.success(f"Perfect! You printed: {printed_val}")
