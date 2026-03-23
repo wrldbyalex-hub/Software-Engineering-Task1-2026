@@ -103,4 +103,3 @@ elif the_page == "Check point":
     checkpoint.show()
 elif the_page == "Conclusion":
     conclusion.show()
-
